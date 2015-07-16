@@ -5,25 +5,16 @@
   
   <title>Hdu 多校赛第三场 | happy_lcj</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Hdu 4889 Scary Path Finding Algorithm
-题意给了一段程序，但这段程序有bug，给定一个C,求一组测试数据，使得程序会输出’doge’
-分析代码中只要所有点出队列的总次数大于C,就会输出 ‘doge’但是C最大到 23333333,而顶点数n不超过100，那么肯定要使出队列总次数达到指数级才行，即肯定有顶点会重复进入多次如上图所示，设p为奇数顶点，p+2可由 p或">
+  <meta name="description" content="Hdu 4889 Scary Path Finding AlgorithmScary Path Finding Algorithm![hdu 4889](/img/hdu 4889.png）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hdu 多校赛第三场">
 <meta property="og:url" content="http://happylcj.github.io/2015/07/16/2014 Hdu-多校赛第三场/index.html">
 <meta property="og:site_name" content="happy_lcj">
-<meta property="og:description" content="Hdu 4889 Scary Path Finding Algorithm
-题意给了一段程序，但这段程序有bug，给定一个C,求一组测试数据，使得程序会输出’doge’
-分析代码中只要所有点出队列的总次数大于C,就会输出 ‘doge’但是C最大到 23333333,而顶点数n不超过100，那么肯定要使出队列总次数达到指数级才行，即肯定有顶点会重复进入多次如上图所示，设p为奇数顶点，p+2可由 p或">
-<meta property="og:image" content="http://happylcj.github.io/img/hdu 4889）
-<!-- more -->
-[Scary Path Finding Algorithm](http://acm.hdu.edu.cn/showproblem.php?pid=4889">
-<meta property="og:updated_time" content="2015-07-16T11:56:01.905Z">
+<meta property="og:description" content="Hdu 4889 Scary Path Finding AlgorithmScary Path Finding Algorithm![hdu 4889](/img/hdu 4889.png）">
+<meta property="og:updated_time" content="2015-07-16T11:58:33.701Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hdu 多校赛第三场">
-<meta name="twitter:description" content="Hdu 4889 Scary Path Finding Algorithm
-题意给了一段程序，但这段程序有bug，给定一个C,求一组测试数据，使得程序会输出’doge’
-分析代码中只要所有点出队列的总次数大于C,就会输出 ‘doge’但是C最大到 23333333,而顶点数n不超过100，那么肯定要使出队列总次数达到指数级才行，即肯定有顶点会重复进入多次如上图所示，设p为奇数顶点，p+2可由 p或">
+<meta name="twitter:description" content="Hdu 4889 Scary Path Finding AlgorithmScary Path Finding Algorithm![hdu 4889](/img/hdu 4889.png）">
   
     <link rel="alternative" href="/atom.xml" title="happy_lcj" type="application/atom+xml">
   
@@ -233,9 +224,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Hdu_4889_Scary_Path_Finding_Algorithm">Hdu 4889 Scary Path Finding Algorithm</h3><p><img src="/img/hdu 4889）
-&lt;!-- more --&gt;
-[Scary Path Finding Algorithm](http://acm.hdu.edu.cn/showproblem.php?pid=4889" alt="hdu 4889"></p>
+        <h3 id="Hdu_4889_Scary_Path_Finding_Algorithm">Hdu 4889 Scary Path Finding Algorithm</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=4889" target="_blank" rel="external">Scary Path Finding Algorithm</a><br>![hdu 4889](/img/hdu 4889.png）<br><a id="more"></a></p>
 <h3 id="题意">题意</h3><p>给了一段程序，但这段程序有bug，给定一个C,求一组测试数据，使得程序会输出’doge’</p>
 <h3 id="分析">分析</h3><p>代码中只要所有点出队列的总次数大于C,就会输出 ‘doge’<br>但是C最大到 23333333,而顶点数n不超过100，<br>那么肯定要使出队列总次数达到指数级才行，即肯定有顶点会重复进入多次<br>如上图所示，设p为奇数顶点，p+2可由 p或p+1到达，<br>由 p 可到达 p+1,p+2，要保证 p+2 多次进入队列，必须由p+1点开始松弛前出队列，<br>才能再次进入,将图中看成有多个包含p,p+1,p+2的小三角形，</p>
 <p><p,p+1> 权值为 ai,<p+1,p+2> 权值为 bi,<p,p+2>权值为 ci<br>则 ci&lt;bi<br>这样松弛p点时，会把p+2放在队首，p+1放在队尾，p+2会先出队列</p,p+2></p+1,p+2></p,p+1></p>
