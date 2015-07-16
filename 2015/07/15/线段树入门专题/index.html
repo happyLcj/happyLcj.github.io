@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>线段树入门专题 | happy_lcj</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="第一次接触线段树，发现理解基本思想后，线段树的基本运用还是很简单的不过对于区间更新还需要用到延迟标记法进行优化![线段树](/img/线段树.png）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线段树入门专题">
+<meta property="og:url" content="http://happylcj.github.io/2015/07/15/线段树入门专题/index.html">
+<meta property="og:site_name" content="happy_lcj">
+<meta property="og:description" content="第一次接触线段树，发现理解基本思想后，线段树的基本运用还是很简单的不过对于区间更新还需要用到延迟标记法进行优化![线段树](/img/线段树.png）">
+<meta property="og:updated_time" content="2015-07-16T07:53:40.271Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="线段树入门专题">
+<meta name="twitter:description" content="第一次接触线段树，发现理解基本思想后，线段树的基本运用还是很简单的不过对于区间更新还需要用到延迟标记法进行优化![线段树](/img/线段树.png）">
+  
+    <link rel="alternative" href="/atom.xml" title="happy_lcj" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/头像.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">happylcj</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="/#" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="/#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/线段树-延迟标记法/" style="font-size: 10px;">线段树 延迟标记法</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://enumz.github.io">Enumz Blog</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">happylcj</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/头像.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">happylcj</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="/#" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="/#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-线段树入门专题" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/07/15/线段树入门专题/" class="article-date">
+  	<time datetime="2015-07-15T02:33:35.000Z" itemprop="datePublished">2015-07-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      线段树入门专题
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/线段树-延迟标记法/">线段树 延迟标记法</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/线段树/">线段树</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="第一次接触线段树，发现理解基本思想后，线段树的基本运用还是很简单的">第一次接触线段树，发现理解基本思想后，线段树的基本运用还是很简单的</h3><p>不过对于区间更新还需要用到延迟标记法进行优化<br>![线段树](/img/线段树.png）<br><a id="more"></a></p>
+<h2 id="HDU_1754_I_Hate_It">HDU 1754 I Hate It</h2><h3 id="链接">链接</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=1754" target="_blank" rel="external">I Hate It</a></p>
+<h3 id="题意">题意</h3><p>中文题，题意不用解释。。<br>‘Q’ a b 查询 [a,b] 区间的最大值<br>‘U’ a b 将ID为a的成绩改为b</p>
+<h3 id="分析">分析</h3><p>单点更新，求区间最值</p>
+<h3 id="参考代码">参考代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span>&lt;stdio.h&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span>&lt;algorithm&gt;</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">200000</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> a[N+<span class="number">10</span>],tree[<span class="number">2</span>*N+<span class="number">10</span>],ans;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pushUp</span><span class="params">(<span class="keyword">int</span> node)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    tree[node]=max(tree[node*<span class="number">2</span>],tree[node*<span class="number">2</span>+<span class="number">1</span>]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> node)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l==r)&#123;</span><br><span class="line">        tree[node]=a[l];</span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">    build(l,mid,node*<span class="number">2</span>);</span><br><span class="line">    build(mid+<span class="number">1</span>,r,node*<span class="number">2</span>+<span class="number">1</span>);</span><br><span class="line">    pushUp(node);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> node,<span class="keyword">int</span> pos,<span class="keyword">int</span> val)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l==r)&#123;</span><br><span class="line">        tree[node]=val;</span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(mid&gt;=pos)</span><br><span class="line">        update(l,mid,node*<span class="number">2</span>,pos,val);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        update(mid+<span class="number">1</span>,r,node*<span class="number">2</span>+<span class="number">1</span>,pos,val);</span><br><span class="line">    pushUp(node);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> node,<span class="keyword">int</span> ql,<span class="keyword">int</span> qr)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(ql&lt;=l&amp;&amp;r&lt;=qr)&#123;</span><br><span class="line">        ans=max(ans,tree[node]);</span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(mid&gt;=ql)</span><br><span class="line">        query(l,mid,node*<span class="number">2</span>,ql,qr);</span><br><span class="line">    <span class="keyword">if</span>(mid&lt;qr)</span><br><span class="line">        query(mid+<span class="number">1</span>,r,node*<span class="number">2</span>+<span class="number">1</span>,ql,qr);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n,m;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m)!=EOF)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">        build(<span class="number">1</span>,n,<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">char</span> ope[<span class="number">3</span>];</span><br><span class="line">        <span class="keyword">int</span> x,y;</span><br><span class="line">        <span class="keyword">while</span>(m--)&#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%s%d%d"</span>,ope,&amp;x,&amp;y);</span><br><span class="line">            <span class="keyword">if</span>(ope[<span class="number">0</span>]==<span class="string">'Q'</span>)&#123;</span><br><span class="line">                ans=-<span class="number">1</span>;</span><br><span class="line">                query(<span class="number">1</span>,n,<span class="number">1</span>,x,y);</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                update(<span class="number">1</span>,n,<span class="number">1</span>,x,y);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="HDU1166_敌兵布阵">HDU1166 敌兵布阵</h2><h3 id="链接-1">链接</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=1166" target="_blank" rel="external">敌兵布阵</a></p>
+<h3 id="题意-1">题意</h3><p>(1)Add i j，第i个营地增加j个人（j不超过30）<br>(2)Sub i j ,第i个营地减少j个人（j不超过30）;<br>(3)Query i j ,i和j为正整数,i&lt;=j，表示询问第i到第j个营地的总人数;<br>(4)End 表示结束，这条命令在每组数据最后出现;</p>
+<h3 id="分析-1">分析</h3><p>单点更新，区间求和</p>
+<h3 id="参考代码-1">参考代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span>&lt;stdio.h&gt;</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">50000</span>;</span><br><span class="line"><span class="keyword">int</span> a[N+<span class="number">10</span>],tree[N*<span class="number">2</span>+<span class="number">10</span>],ans;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pushUp</span><span class="params">(<span class="keyword">int</span> node)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    tree[node]=tree[node*<span class="number">2</span>]+tree[node*<span class="number">2</span>+<span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> node)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l==r)&#123;</span><br><span class="line">        tree[node]=a[l];</span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">    build(l,mid,node*<span class="number">2</span>);</span><br><span class="line">    build(mid+<span class="number">1</span>,r,node*<span class="number">2</span>+<span class="number">1</span>);</span><br><span class="line">    pushUp(node);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> node,<span class="keyword">int</span> pos,<span class="keyword">int</span> val)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l==r)&#123;</span><br><span class="line">        tree[node]+=val;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(mid&gt;=pos)</span><br><span class="line">        update(l,mid,node*<span class="number">2</span>,pos,val);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        update(mid+<span class="number">1</span>,r,node*<span class="number">2</span>+<span class="number">1</span>,pos,val);</span><br><span class="line">    pushUp(node);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> node,<span class="keyword">int</span> ql,<span class="keyword">int</span> qr)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(ql&lt;=l&amp;&amp;r&lt;=qr)&#123;</span><br><span class="line">        ans+=tree[node];</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(mid&gt;=ql)</span><br><span class="line">        query(l,mid,node*<span class="number">2</span>,ql,qr);</span><br><span class="line">    <span class="keyword">if</span>(mid&lt;qr)</span><br><span class="line">        query(mid+<span class="number">1</span>,r,node*<span class="number">2</span>+<span class="number">1</span>,ql,qr);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n,T;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=T;k++)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Case %d:\n"</span>,k);</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">        build(<span class="number">1</span>,n,<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">char</span> ope[<span class="number">10</span>];</span><br><span class="line">        <span class="keyword">int</span> x,y;</span><br><span class="line">        <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%s"</span>,ope)!=EOF)&#123;</span><br><span class="line">            <span class="keyword">if</span>(ope[<span class="number">0</span>]==<span class="string">'E'</span>)</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;y);</span><br><span class="line">            <span class="keyword">if</span>(ope[<span class="number">0</span>]==<span class="string">'Q'</span>)&#123;</span><br><span class="line">                ans=<span class="number">0</span>;</span><br><span class="line">                query(<span class="number">1</span>,n,<span class="number">1</span>,x,y);</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(ope[<span class="number">0</span>]==<span class="string">'A'</span>)</span><br><span class="line">                update(<span class="number">1</span>,n,<span class="number">1</span>,x,y);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                update(<span class="number">1</span>,n,<span class="number">1</span>,x,-y);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="HDU_1698_Just_a_Hook">HDU 1698 Just a Hook</h2><h3 id="链接-2">链接</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=1698" target="_blank" rel="external">Just a Hook</a></p>
+<h3 id="题意-2">题意</h3><p>一个hook由n个连续的相同长度的金属棍组成，hook中的金属初始都为铜<br>x,y,z 将[x,y]区间内的所有金属材质变为 z (1代表铜，2代表银，3代表金)<br>已知一个铜棍价值为1，一个银棍价值为2，一个金棍价值为3，<br>经过 q 次操作后，求 hook的总价值</p>
+<h3 id="分析-2">分析</h3><p>解法1:线段树更新区间，求区间和<br>这题每次到更新区间，区间更新是指更新某个区间内的所有叶子结点的值，<br>因为涉及到的叶子结点不止一个，而叶子结点会影响其相应的父节点，<br>那么回溯需要更新的非叶子节点也会有很多，如果一次性更新完，<br>操作的时间复杂度很高，肯定不是O(lgn)<br>如果每次将所有需要更新的结点一次更新完，肯定会超时，（亲身体验 TLE …)<br>这样可以用延迟标记法</p>
+<h3 id="延迟标记法思想">延迟标记法思想</h3><p>每个结点新增加一个标记，记录这个结点是否进行了某种修改(这种修改操作会影响其子结点)，<br>对于任意区间的修改，我们先按照区间查询的方式将其划分成线段树中的结点，<br>然后修改这些结点的信息，并给这些节点标记上代表这种修改操作的标记。<br>在修改和查询的时候，如果我们到了一个结点p，并且决定考虑其子结点，<br>那么我们就要看结点p是否被标记，如果有，就要按照标记修改其子结点的信息，<br>并且给子结点都标上相同的标记，同时消掉结点p的标记。 （将父结点标记转移到子结点）<br>解法2：因为只需要求最终所有金属棍的总和，即只需要知道终态每根金属棍的状态，<br>因为多次更新区间，每根金属棍可能会被多次更新，而若更新了某个金属棍，<br>那前面对它的更新就被覆盖了，所以对于每根金属棍去找最后一次对它的更新操作<br>将所有的修改存起来逆序去查找即可。。。纯属暴力</p>
+<h3 id="参考代码_（线段树）">参考代码 （线段树）</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span>&lt;stdio.h&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span>&lt;iostream&gt;</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">100000</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">struct</span> stu&#123;</span><br><span class="line">    <span class="keyword">int</span> sum,mark;</span><br><span class="line">&#125;tree[N*<span class="number">4</span>+<span class="number">10</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pushUp</span><span class="params">(<span class="keyword">int</span> node)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    tree[node].sum=tree[node*<span class="number">2</span>].sum+tree[node*<span class="number">2</span>+<span class="number">1</span>].sum;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> node)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    tree[node].mark=-<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(l==r)&#123;</span><br><span class="line">        tree[node].sum=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">    build(l,mid,node*<span class="number">2</span>);</span><br><span class="line">    build(mid+<span class="number">1</span>,r,node*<span class="number">2</span>+<span class="number">1</span>);</span><br><span class="line">    pushUp(node);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pushDown</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> node)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(tree[node].mark!=-<span class="number">1</span>)&#123;  </span><br><span class="line">	<span class="comment">//子结点可能被多次延迟，但是前面的状态需要被覆盖，只需保留当前延迟标记即可</span></span><br><span class="line">        tree[node*<span class="number">2</span>].mark=tree[node*<span class="number">2</span>+<span class="number">1</span>].mark=tree[node].mark;   <span class="comment">// =</span></span><br><span class="line">        <span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">        tree[node*<span class="number">2</span>].sum=(mid-l+<span class="number">1</span>)*tree[node].mark;</span><br><span class="line">        tree[node*<span class="number">2</span>+<span class="number">1</span>].sum=(r-mid)*tree[node].mark;</span><br><span class="line">        tree[node].mark=-<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> node,<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> z)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x&lt;=l&amp;&amp;r&lt;=y)&#123;</span><br><span class="line">        tree[node].sum=z*(r-l+<span class="number">1</span>);</span><br><span class="line">        tree[node].mark=z;</span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    pushDown(l,r,node);</span><br><span class="line">    <span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(mid&gt;=x)</span><br><span class="line">        update(l,mid,node*<span class="number">2</span>,x,y,z);</span><br><span class="line">    <span class="keyword">if</span>(mid&lt;y)</span><br><span class="line">        update(mid+<span class="number">1</span>,r,node*<span class="number">2</span>+<span class="number">1</span>,x,y,z);</span><br><span class="line">    pushUp(node);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n,q,T;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=T;k++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;q);</span><br><span class="line">        build(<span class="number">1</span>,n,<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">while</span>(q--)&#123;</span><br><span class="line">            <span class="keyword">int</span> x,y,z;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;x,&amp;y,&amp;z);</span><br><span class="line">            update(<span class="number">1</span>,n,<span class="number">1</span>,x,y,z);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Case %d: The total value of the hook is %d.\n"</span>,k,tree[<span class="number">1</span>].sum);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="暴力求解">暴力求解</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span>&lt;stdio.h&gt;</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">100000</span>;</span><br><span class="line"><span class="keyword">struct</span> stu&#123;</span><br><span class="line">    <span class="keyword">int</span> l,r,val;</span><br><span class="line">&#125;a[N];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n,q,T;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=T;k++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;q);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=q;i++)</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;a[i].l,&amp;a[i].r,&amp;a[i].val);</span><br><span class="line">        <span class="keyword">int</span> sum=n;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=q;j&gt;=<span class="number">1</span>;j--)</span><br><span class="line">                <span class="keyword">if</span>(a[j].l&lt;=i&amp;&amp;i&lt;=a[j].r)&#123;</span><br><span class="line">                    sum+=a[j].val-<span class="number">1</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Case %d: The total value of the hook is %d.\n"</span>,k,sum);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="POJ_3468_A_Simple_Problem_with_Integers">POJ 3468 A Simple Problem with Integers</h2><h3 id="链接-3">链接</h3><p><a href="http://poj.org/problem?id=3468" target="_blank" rel="external">A Simple Problem with Integers</a></p>
+<h3 id="题意-3">题意</h3><p>‘C’ a b c： 将[a,b]区间的每一个值增加 c<br>‘Q’ a b:查询并输出 [a,b]区间的和</p>
+<h3 id="分析-3">分析</h3><p>线段树区间更新，区间求和，用延迟标记法优化时间<br>需要注意的是，子结点可能会被多次延迟，而本题中每次对区间的更改都会影响最终的和<br>所以要合并多次延迟，即延迟标记记录对每次延迟的总和</p>
+<h3 id="参考代码-2">参考代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span>&lt;stdio.h&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> LL __int64</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">100000</span>;</span><br><span class="line"><span class="keyword">struct</span> stu&#123;</span><br><span class="line">    LL sum,mark;</span><br><span class="line">&#125;tree[N&lt;&lt;<span class="number">2</span>];</span><br><span class="line">LL a[N+<span class="number">10</span>],sum;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pushUp</span><span class="params">(<span class="keyword">int</span> node)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    tree[node].sum=tree[node&lt;&lt;<span class="number">1</span>].sum+tree[node&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].sum;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pushDown</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> node)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(tree[node].mark)&#123;</span><br><span class="line">		<span class="comment">//子结点延迟标记</span></span><br><span class="line">        tree[node&lt;&lt;<span class="number">1</span>].mark+=tree[node].mark;</span><br><span class="line">        tree[node&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].mark+=tree[node].mark;</span><br><span class="line">        <span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">		<span class="comment">//区间内每个值都增加被延迟的总和，乘上区间长度即可</span></span><br><span class="line">        tree[node&lt;&lt;<span class="number">1</span>].sum+=(mid-l+<span class="number">1</span>)*tree[node].mark;  </span><br><span class="line">        tree[node&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].sum+=(r-mid)*tree[node].mark;</span><br><span class="line">        tree[node].mark=<span class="number">0</span>;  <span class="comment">//父结点延迟标记取消</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> node)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    tree[node].mark=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(l==r)&#123;</span><br><span class="line">        tree[node].sum=a[l];</span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">    build(l,mid,node&lt;&lt;<span class="number">1</span>);</span><br><span class="line">    build(mid+<span class="number">1</span>,r,node&lt;&lt;<span class="number">1</span>|<span class="number">1</span>);</span><br><span class="line">    pushUp(node);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> node,<span class="keyword">int</span> a,<span class="keyword">int</span> b,LL c)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(a&lt;=l&amp;&amp;r&lt;=b)&#123;</span><br><span class="line">        tree[node].mark+=c;</span><br><span class="line">        tree[node].sum+=c*(r-l+<span class="number">1</span>);  <span class="comment">//区间内每个值都加c</span></span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    pushDown(l,r,node);</span><br><span class="line">    <span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(a&lt;=mid)</span><br><span class="line">        update(l,mid,node&lt;&lt;<span class="number">1</span>,a,b,c);</span><br><span class="line">    <span class="keyword">if</span>(mid&lt;b)</span><br><span class="line">        update(mid+<span class="number">1</span>,r,node&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,a,b,c);</span><br><span class="line">    pushUp(node);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> node,<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(a&lt;=l&amp;&amp;r&lt;=b)&#123;</span><br><span class="line">        sum+=tree[node].sum;</span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    pushDown(l,r,node);</span><br><span class="line">    <span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(a&lt;=mid)</span><br><span class="line">        query(l,mid,node&lt;&lt;<span class="number">1</span>,a,b);</span><br><span class="line">    <span class="keyword">if</span>(mid&lt;b)</span><br><span class="line">        query(mid+<span class="number">1</span>,r,node&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,a,b);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n,m;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%I64d"</span>,&amp;a[i]);</span><br><span class="line">    build(<span class="number">1</span>,n,<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">while</span>(m--)&#123;</span><br><span class="line">        <span class="keyword">char</span> ope[<span class="number">3</span>];</span><br><span class="line">        <span class="keyword">int</span> a,b;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%s"</span>,ope);</span><br><span class="line">        <span class="keyword">if</span>(ope[<span class="number">0</span>]==<span class="string">'Q'</span>)&#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;a,&amp;b);</span><br><span class="line">            sum=<span class="number">0</span>;</span><br><span class="line">            query(<span class="number">1</span>,n,<span class="number">1</span>,a,b);</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%I64d\n"</span>,sum);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            LL c;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d%I64d"</span>,&amp;a,&amp;b,&amp;c);</span><br><span class="line">            update(<span class="number">1</span>,n,<span class="number">1</span>,a,b,c);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/07/14/2014 Hdu 多校赛第一场/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">2014 hdu 多校赛第一场</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 happylcj
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
