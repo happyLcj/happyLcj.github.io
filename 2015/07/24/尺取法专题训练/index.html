@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="happy_lcj">
 <meta property="og:description" content="今天听说了一个新名词 “尺取法”,做几个简单题刷刷成就感">
 <meta property="og:image" content="http://happylcj.github.io/img/XM-002.jpg">
-<meta property="og:updated_time" content="2015-07-24T09:37:39.575Z">
+<meta property="og:updated_time" content="2015-07-24T11:58:14.363Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="尺取法专题训练">
 <meta name="twitter:description" content="今天听说了一个新名词 “尺取法”,做几个简单题刷刷成就感">
@@ -83,7 +83,6 @@
 				</div>
 			</div>
 		
-
 		<div class="switch-area">
 			<div class="switch-wrap">
 				<section class="switch-part switch-part1">
@@ -114,7 +113,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/尺取法/" style="font-size: 10px;">尺取法</a> <a href="/tags/延迟标记法/" style="font-size: 10px;">延迟标记法</a> <a href="/tags/线段树/" style="font-size: 20px;">线段树</a> <a href="/tags/贪心/" style="font-size: 10px;">贪心</a> <a href="/tags/链式前向星/" style="font-size: 10px;">链式前向星</a>
+						<a href="/tags/尺取法/" style="font-size: 10px;">尺取法</a> <a href="/tags/延迟标记法/" style="font-size: 10px;">延迟标记法</a> <a href="/tags/最大流/" style="font-size: 10px;">最大流</a> <a href="/tags/线段树/" style="font-size: 20px;">线段树</a> <a href="/tags/贪心/" style="font-size: 10px;">贪心</a> <a href="/tags/链式前向星/" style="font-size: 10px;">链式前向星</a>
 					</div>
 				</section>
 				
@@ -226,7 +225,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>今天听说了一个新名词 “尺取法”,做几个简单题刷刷成就感<br><img src="/img/XM-002.jpg" alt="XM-002"><br><a id="more"></a></p>
-<h2 id="尺取法">尺取法</h2><p>用两个’指针’表示区间[l,r]的左右端点，然后根据条件将左/右端点不断前移，<br>并更新满足条件的结果，直到右端点走到末尾为止<br>整个过程分为4步：<br>1.初始化左右端点<br>2.不断扩大右端点，直到满足条件<br>3.如果第二步中无法满足条件，则终止，否则更新结果<br>4.将左端点扩大1，然后回到第二步<br>重复上诉步骤，直到将右端点走完整个区间为止<br>尺取法适合连续区间的问题，用尺取法来优化，使复杂度降为了O(n)。</p>
+<h2 id="尺取法">尺取法</h2><p>用两个’指针’表示区间[l,r]的左右端点，然后根据条件将左/右端点不断前移，<br>并更新满足条件的结果，直到右端点走到末尾为止<br>整个过程分为4步：<br>1.初始化左右端点<br>2.不断扩大右端点，直到满足条件<br>3.如果第二步中无法满足条件，则终止，否则更新结果<br>4.将左端点扩大1，然后回到第二步<br>重复上述步骤，直到将右端点走完整个区间为止<br>尺取法适合连续区间的问题，用尺取法来优化，使复杂度降为了O(n)。</p>
 <h2 id="POJ_3601_Subsequence">POJ 3601 Subsequence</h2><h3 id="链接">链接</h3><p><a href="http://poj.org/problem?id=3061" target="_blank" rel="external">Subsequence</a></p>
 <h3 id="题意">题意</h3><p>给定一个长度为N的序列和一个整数S，<br>求满足区间和大于等于S的最小区间长度<br>若找不到输出”0”</p>
 <h3 id="参考代码">参考代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span>&lt;stdio.h&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> min(a,b) a&lt;b?a:b</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">100000</span>;</span><br><span class="line"><span class="keyword">int</span> a[N+<span class="number">10</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> T,n,s;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</span><br><span class="line">    <span class="keyword">while</span>(T--)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;s);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">1</span>,j=<span class="number">1</span>,sum=<span class="number">0</span>,ans=N+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;=n&amp;&amp;j&lt;=n)&#123;</span><br><span class="line">            sum+=a[j];</span><br><span class="line">            <span class="keyword">if</span>(sum&gt;=s)&#123;</span><br><span class="line">                ans=min(ans,j-i+<span class="number">1</span>);</span><br><span class="line">                sum-=a[i++];</span><br><span class="line">                <span class="keyword">while</span>(i&lt;=j&amp;&amp;sum&gt;=s)</span><br><span class="line">                    sum-=a[i++];</span><br><span class="line">                <span class="keyword">if</span>(i&lt;j)</span><br><span class="line">                    ans=min(ans,j-(i-<span class="number">1</span>)+<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(ans==N+<span class="number">1</span>)</span><br><span class="line">            ans=<span class="number">0</span>;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -241,6 +240,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2015/07/24/最大流/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          最大流
+        
+      </div>
+    </a>
   
   
     <a href="/2015/07/23/2015-Hdu-多校赛第二场/" id="article-nav-older" class="article-nav-link-wrap">
