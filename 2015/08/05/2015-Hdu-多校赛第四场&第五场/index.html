@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>2015 Hdu 多校赛第四场&amp;第五场 | happy_lcj</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="考虑到第四场题目难度过大，加了两道水题结果就只做出这两道水题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2015 Hdu 多校赛第四场&第五场">
+<meta property="og:url" content="http://happylcj.github.io/2015/08/05/2015-Hdu-多校赛第四场&第五场/index.html">
+<meta property="og:site_name" content="happy_lcj">
+<meta property="og:description" content="考虑到第四场题目难度过大，加了两道水题结果就只做出这两道水题">
+<meta property="og:image" content="http://happylcj.github.io/img/XM-001.jpg">
+<meta property="og:updated_time" content="2015-08-05T03:44:21.113Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2015 Hdu 多校赛第四场&第五场">
+<meta name="twitter:description" content="考虑到第四场题目难度过大，加了两道水题结果就只做出这两道水题">
+  
+    <link rel="alternative" href="/atom.xml" title="happy_lcj" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/头像.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">happylcj</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="/#" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="/#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/HDU/" style="font-size: 10px;">HDU</a> <a href="/tags/尺取法/" style="font-size: 10px;">尺取法</a> <a href="/tags/延迟标记法/" style="font-size: 10px;">延迟标记法</a> <a href="/tags/快捷键/" style="font-size: 10px;">快捷键</a> <a href="/tags/最大流/" style="font-size: 10px;">最大流</a> <a href="/tags/线段树/" style="font-size: 20px;">线段树</a> <a href="/tags/记忆化搜索/" style="font-size: 10px;">记忆化搜索</a> <a href="/tags/贪心/" style="font-size: 10px;">贪心</a> <a href="/tags/链式前向星/" style="font-size: 10px;">链式前向星</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://enumz.github.io">Enumz Blog</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">happylcj</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/头像.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">happylcj</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="/#" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="/#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-2015-Hdu-多校赛第四场&amp;第五场" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/05/2015-Hdu-多校赛第四场&第五场/" class="article-date">
+  	<time datetime="2015-08-05T02:50:03.000Z" itemprop="datePublished">2015-08-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      2015 Hdu 多校赛第四场&amp;第五场
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HDU/">HDU</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>考虑到第四场题目难度过大，加了两道水题<br>结果就只做出这两道水题<br><img src="/img/XM-001.jpg" alt="XM"><br><a id="more"></a></p>
+<h2 id="第四场">第四场</h2><h2 id="Hdu_5327_Olympiad">Hdu 5327 Olympiad</h2><h3 id="链接">链接</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5327" target="_blank" rel="external">Olympiad</a></p>
+<h3 id="题意">题意</h3><p>统计区间[a,b]内满足各位数字不同的数的个数</p>
+<h3 id="分析">分析</h3><p>多区间查询，若每次都计算个数效率非常低<br>可以预处理，先标记[1,100000]内每个数是否满足条件<br>再用s[i]累计区间[1,i]的满足条件的总个数<br>计算[a,b]的个数，只需用s[b]-s[a-1]即可</p>
+<h3 id="代码">代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span>&lt;stdio.h&gt;</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">100000</span>;</span><br><span class="line"><span class="keyword">int</span> s[N+<span class="number">10</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=N;i++)&#123;</span><br><span class="line">        <span class="keyword">bool</span> flag[<span class="number">10</span>]=&#123;<span class="keyword">false</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> t=i;</span><br><span class="line">        <span class="keyword">while</span>(t)&#123;</span><br><span class="line">            <span class="keyword">if</span>(flag[t%<span class="number">10</span>])</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            flag[t%<span class="number">10</span>]=<span class="keyword">true</span>;</span><br><span class="line">            t/=<span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        s[i]=s[i-<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">if</span>(!t)</span><br><span class="line">            s[i]++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    init();</span><br><span class="line">    <span class="keyword">int</span> T;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</span><br><span class="line">    <span class="keyword">while</span>(T--)&#123;</span><br><span class="line">        <span class="keyword">int</span> l,r;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;l,&amp;r);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,s[r]-s[l-<span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Hdu_5328_Problem_Killer">Hdu 5328 Problem Killer</h2><h3 id="链接-1">链接</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5328" target="_blank" rel="external">Problem Killer</a></p>
+<h3 id="题意-1">题意</h3><p>给定长度为n的数列，求[l,r]的最大长度,<br>区间[l,r]形成的数列必须为等差数列或者等比数列</p>
+<h3 id="分析-1">分析</h3><p>等差数列公差相等<br>等比数列公比相等<br>可以求出原数列所有相邻两项的差和比<br>然后求最长的连续相等序列的长度</p>
+<h3 id="代码-1">代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span>&lt;stdio.h&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> max(a,b) a&gt;b?a:b</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">1000000</span>;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">double</span> a[N+<span class="number">10</span>],b[N+<span class="number">10</span>],c[N+<span class="number">10</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">solve</span><span class="params">(<span class="keyword">double</span> x[])</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> l=<span class="number">1</span>,cnt=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(l&lt;n)&#123;</span><br><span class="line">        <span class="keyword">int</span> r=l;</span><br><span class="line">        <span class="keyword">while</span>(r&lt;n&amp;&amp;x[r]==x[l])</span><br><span class="line">            r++;</span><br><span class="line">        cnt=max(cnt,r-l);</span><br><span class="line">        l=r;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> T;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</span><br><span class="line">    <span class="keyword">while</span>(T--)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%lf"</span>,&amp;a[i]);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)&#123;</span><br><span class="line">            b[i]=a[i+<span class="number">1</span>]-a[i];</span><br><span class="line">            c[i]=a[i+<span class="number">1</span>]/a[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">        ans=max(ans,solve(b));</span><br><span class="line">        ans=max(ans,solve(c));</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="第五场">第五场</h2><h2 id="Hdu_5344_MZL’s_xor">Hdu 5344 MZL’s xor</h2><h3 id="链接-2">链接</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5344" target="_blank" rel="external">MZL’s xor</a></p>
+<h3 id="题意-2">题意</h3><p>给定n,m,z,l<br>$A_1=0,A_i=(A_{i−1}*m+z) mod l$<br>求所有的 (A_i+A_j)(1≤i,j≤n) 异或的值<br>如n=2 所求为：(A1+A1)^(A1+A2)^(A2+(A1)^(A2+A2)</p>
+<h3 id="分析-2">分析</h3><p>因为x^x=0,x^0=x<br>即(Ai+Aj)^(Aj+Ai)=0<br>对于任何$i\neqj$ 都存在(Ai+Aj)和(Aj+Ai)，它们异或后为0<br>消掉异或后为0的项只剩 (Ai+Aj) (i==j,1≤i,j≤n)<br>即求 (A1+A1)^(A2+A2)^…^(An+An)</p>
+<h3 id="参考代码">参考代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span>&lt;stdio.h&gt;</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">500000</span>;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> a[N+<span class="number">10</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> T,n,m,z,l;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</span><br><span class="line">    <span class="keyword">while</span>(T--)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d%d%d"</span>,&amp;n,&amp;m,&amp;z,&amp;l);</span><br><span class="line">        a[<span class="number">1</span>]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> ans=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++)&#123;</span><br><span class="line">            a[i]=(a[i-<span class="number">1</span>]*m+z)%l;</span><br><span class="line">            ans^=<span class="number">2</span>*a[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%I64d\n"</span>,ans);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Hdu_5347_MZL’s_chemistry">Hdu 5347 MZL’s chemistry</h2><h3 id="链接-3">链接</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5347" target="_blank" rel="external">MZL’s chemistry</a></p>
+<h3 id="题意-3">题意</h3><p>给定两个化学元素的原子序数<br>比较它们的第一电离能的大小</p>
+<h3 id="分析-3">分析</h3><p>纯属化学题，没有任何意义…<br>元素周期表中：<br>同一主族元素从上到下第一电离能逐渐增大<br>同一周期从左到右第一电离能呈增大趋势，<br>但是第二主族和第五主族为特例<br>即同周期第二主族比三主族小，第五主族比六主族小<br>打表存每个元素所在的主族和周期，根据规律比较即可</p>
+<h3 id="代码-2">代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span>&lt;stdio.h&gt;</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">100</span>;</span><br><span class="line"><span class="keyword">struct</span> stu&#123;</span><br><span class="line">    <span class="keyword">int</span> pre,gro;</span><br><span class="line">&#125;a[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    a[<span class="number">1</span>].pre=<span class="number">1</span>,a[<span class="number">1</span>].gro=<span class="number">1</span>;</span><br><span class="line">    a[<span class="number">2</span>].pre=<span class="number">1</span>,a[<span class="number">2</span>].gro=<span class="number">8</span>;</span><br><span class="line">    <span class="keyword">int</span> pre=<span class="number">2</span>,gro=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">3</span>;i&lt;=<span class="number">18</span>;i++)&#123;</span><br><span class="line">        a[i].pre=pre;</span><br><span class="line">        a[i].gro=gro++;</span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">10</span>)&#123;</span><br><span class="line">            pre++;</span><br><span class="line">            gro=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//35,36,53,54,85,86</span></span><br><span class="line">    a[<span class="number">35</span>].pre=<span class="number">4</span>,a[<span class="number">35</span>].gro=<span class="number">7</span>;</span><br><span class="line">    a[<span class="number">36</span>].pre=<span class="number">4</span>,a[<span class="number">36</span>].gro=<span class="number">8</span>;</span><br><span class="line">    a[<span class="number">53</span>].pre=<span class="number">5</span>,a[<span class="number">53</span>].gro=<span class="number">7</span>;</span><br><span class="line">    a[<span class="number">54</span>].pre=<span class="number">5</span>,a[<span class="number">54</span>].gro=<span class="number">8</span>;</span><br><span class="line">    a[<span class="number">85</span>].pre=<span class="number">6</span>,a[<span class="number">85</span>].gro=<span class="number">7</span>;</span><br><span class="line">    a[<span class="number">86</span>].pre=<span class="number">6</span>,a[<span class="number">86</span>].gro=<span class="number">8</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">judge</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(a[x].gro==a[y].gro)</span><br><span class="line">        <span class="keyword">return</span> a[x].pre&lt;a[y].pre?<span class="keyword">true</span>:<span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">if</span>((a[x].gro==<span class="number">2</span>&amp;&amp;a[y].gro==<span class="number">3</span>)||(a[x].gro==<span class="number">5</span>&amp;&amp;a[y].gro==<span class="number">6</span>))</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>((a[x].gro==<span class="number">3</span>&amp;&amp;a[y].gro==<span class="number">2</span>)||(a[x].gro==<span class="number">6</span>&amp;&amp;a[y].gro==<span class="number">5</span>))</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">return</span> a[x].gro&gt;a[y].gro?<span class="keyword">true</span>:<span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> u,v;</span><br><span class="line">    init();</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;u,&amp;v)!=EOF)&#123;</span><br><span class="line">        <span class="keyword">if</span>(judge(u,v))</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"FIRST BIGGER\n"</span>);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"SECOND BIGGER\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Hdu_5349_MZL’s_simple_problem">Hdu 5349 MZL’s simple problem</h2><h3 id="链接-4">链接</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5349" target="_blank" rel="external">MZL’s simple problem</a></p>
+<h3 id="题意-4">题意</h3><p>有一个集合，初始为空，要对其进行n次操作，操作有三种<br>1 x : 把x加到集合<br>2 : 若集合非空，删除集合的最小值<br>3 : 输出集合的最大值，若集合为空输出0</p>
+<h3 id="分析-4">分析</h3><p>用两个变量来记录集合的元素个数和最大值<br>当集合为空，最大值为无穷小</p>
+<h3 id="代码-3">代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span>&lt;stdio.h&gt;</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF=<span class="number">1000000007</span>;</span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> max(a,b) a&gt;b?a:b</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n,ans=-INF,len=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">while</span>(n--)&#123;</span><br><span class="line">        <span class="keyword">int</span> ope,x;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;ope);</span><br><span class="line">        <span class="keyword">if</span>(ope==<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">            ans=max(ans,x);</span><br><span class="line">            len++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(ope==<span class="number">2</span>)&#123;</span><br><span class="line">            len=(len==<span class="number">0</span>?<span class="number">0</span>:len-<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span>(len==<span class="number">0</span>)</span><br><span class="line">                ans=-INF;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(ans==-INF)</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"0\n"</span>);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/08/04/记忆化搜索专题训练/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">记忆化搜索专题训练</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 happylcj
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
