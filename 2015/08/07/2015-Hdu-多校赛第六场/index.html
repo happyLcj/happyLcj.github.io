@@ -11,8 +11,8 @@
 <meta property="og:url" content="http://happylcj.github.io/2015/08/07/2015-Hdu-多校赛第六场/index.html">
 <meta property="og:site_name" content="happy_lcj">
 <meta property="og:description" content="暑假过半,好想天天睡懒觉…">
-<meta property="og:image" content="http://happylcj.github.io/img/XM-014">
-<meta property="og:updated_time" content="2015-08-07T12:00:09.675Z">
+<meta property="og:image" content="http://happylcj.github.io/img/XM-014.jpg">
+<meta property="og:updated_time" content="2015-08-07T12:01:47.419Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2015 Hdu 多校赛第六场">
 <meta name="twitter:description" content="暑假过半,好想天天睡懒觉…">
@@ -224,7 +224,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>暑假过半,好想天天睡懒觉…<br><img src="/img/XM-014" alt="XM"><br><a id="more"></a></p>
+        <p>暑假过半,好想天天睡懒觉…<br><img src="/img/XM-014.jpg" alt="XM"><br><a id="more"></a></p>
 <h2 id="Hdu_5358_First_One">Hdu 5358 First One</h2><h3 id="链接">链接</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5358" target="_blank" rel="external">First One</a></p>
 <h3 id="题意">题意</h3><p>给定长度为n的数组<br>$$ S(i,j) = \sum_{i=1}^{j} a_i $$<br>$求下列式子的值 ( 默认 \log_2 0 = 0) $<br>$$ \sum_{i=1}^{n} \sum_{j=i}^{n} (\lfloor \log_2 S(i,j) \rfloor + 1) \times (i + j) $$</p>
 <h3 id="分析">分析</h3><p>$ 若 2^{k-1} \leqslant x \leqslant 2^k ,则 $<br>$ A = \lfloor \log_2 x \rfloor + 1 = k $<br>$可以枚举 k，找所有满足 A=k 的区间，并求出对应式子的和$<br>$找A=k的区间时，可以枚举左区间 i,并找到最小的 l 符合 S(i,l)&gt;=2^{k-1}$<br>$找到 最大的 r 符合 S(i,r) &lt; 2^k,则 区间 [i,j] (l&lt;=j&lt;=r)的 A=k $<br>$其贡献值为 k*(i*(r-l+1)+(l+r)*(r-l+1)/2)$</p>
