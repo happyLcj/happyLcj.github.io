@@ -185,7 +185,7 @@ th {
 }
 body {
   position: relative;
-  font-family: Lato, "Microsoft Jhenghei", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  font-family: Lato, "宋体", "Microsoft YaHei", "Microsoft Jhenghei", "Hiragino Sans GB", sans-serif;
   font-size: 16px;
   line-height: 1.7;
   color: #555;
@@ -211,7 +211,7 @@ h6 {
   padding: 0;
   font-weight: bold;
   line-height: 1;
-  font-family: Cambria, Georgia, "Microsoft Jhenghei", "Hiragino Sans GB", "Microsoft YaHei", "Times New Roman", serif;
+  font-family: Cambria, Georgia, "宋体", "Microsoft YaHei", "Microsoft Jhenghei", "Hiragino Sans GB", "Times New Roman", serif;
 }
 h1 {
   font-size: 24px;
@@ -577,7 +577,7 @@ td {
   margin: 20px 0;
   padding: 15px;
   overflow: auto;
-  font-size: 13px;
+  font-size: 16px;
   color: #fff;
   line-height: 1.2;
 }
@@ -587,7 +587,7 @@ td {
 }
 .post pre,
 .post code {
-  font-family: "Courier New", Consolas, Monaco, Menlo, monospace;
+  font-family: "Courier New", Consolas, Monaco, Menlo, "PT Mono", monospace;
 }
 .post code {
   background: #eee;
@@ -647,7 +647,7 @@ td {
 }
 .post .gist .gist-file {
   border: none;
-  font-family: "Courier New", Consolas, Monaco, Menlo, monospace;
+  font-family: "Courier New", Consolas, Monaco, Menlo, "PT Mono", monospace;
   margin: 0;
 }
 .post .gist .gist-file .gist-data {
@@ -670,7 +670,7 @@ td {
 .post .gist .gist-file .gist-meta {
   background: #272822;
   color: #a6e22e;
-  font: 13px Lato, "Microsoft Jhenghei", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  font: 13px Lato, "宋体", "Microsoft YaHei", "Microsoft Jhenghei", "Hiragino Sans GB", sans-serif;
   text-shadow: 0 0;
   padding: 0;
   margin-top: 1em;
@@ -807,7 +807,7 @@ body {
   color: #fff;
   background: #222;
   border-bottom: none;
-  font-family: Lato, "Microsoft Jhenghei", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  font-family: Lato, "宋体", "Microsoft YaHei", "Microsoft Jhenghei", "Hiragino Sans GB", sans-serif;
 }
 .logo {
   display: inline-block;
@@ -1055,7 +1055,7 @@ body {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff5c7e;
+  background: #8f14ff;
 }
 .sidebar-nav {
   margin: 0;
@@ -1468,7 +1468,7 @@ body {
   margin-left: 60px;
   font-size: 16px;
   font-weight: normal;
-  font-family: Lato, "Microsoft Jhenghei", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  font-family: Lato, "宋体", "Microsoft YaHei", "Microsoft Jhenghei", "Hiragino Sans GB", sans-serif;
   line-height: inherit;
 }
 .posts-collapse .post-title::after {
