@@ -573,12 +573,12 @@ td {
 }
 .post pre,
 .post .highlight {
-  background: highlight-background;
+  background: #2d2d2d;
   margin: 20px 0;
   padding: 15px;
   overflow: auto;
   font-size: 13px;
-  color: highlight-foreground;
+  color: #ccc;
   line-height: 1.2;
 }
 .post .highlight .gutter pre,
@@ -615,7 +615,7 @@ td {
 }
 .post .highlight figcaption {
   font-size: 0.85em;
-  color: highlight-comment;
+  color: #999;
   line-height: 1em;
   margin-bottom: 1em;
 }
@@ -642,7 +642,7 @@ td {
   border-style: solid;
   border-color: #ccc;
   border-width: 1px 0;
-  background: highlight-background;
+  background: #2d2d2d;
   padding: 15px 40px 15px 15px;
 }
 .post .gist .gist-file {
@@ -668,8 +668,8 @@ td {
   border: none;
 }
 .post .gist .gist-file .gist-meta {
-  background: highlight-background;
-  color: highlight-comment;
+  background: #2d2d2d;
+  color: #999;
   font: 13px Lato, "Microsoft Jhenghei", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
   text-shadow: 0 0;
   padding: 0;
@@ -684,7 +684,7 @@ td {
   text-decoration: underline;
 }
 pre .comment {
-  color: highlight-comment;
+  color: #999;
 }
 pre .variable,
 pre .attribute,
@@ -698,7 +698,7 @@ pre .html .doctype,
 pre .css .id,
 pre .css .class,
 pre .css .pseudo {
-  color: highlight-red;
+  color: #f2777a;
 }
 pre .number,
 pre .preprocessor,
@@ -706,11 +706,11 @@ pre .built_in,
 pre .literal,
 pre .params,
 pre .constant {
-  color: highlight-orange;
+  color: #f99157;
 }
 pre .ruby .class .title,
 pre .css .rules .attribute {
-  color: highlight-green;
+  color: #9c9;
 }
 pre .string,
 pre .value,
@@ -718,11 +718,11 @@ pre .inheritance,
 pre .header,
 pre .ruby .symbol,
 pre .xml .cdata {
-  color: highlight-green;
+  color: #9c9;
 }
 pre .title,
 pre .css .hexcolor {
-  color: highlight-aqua;
+  color: #6cc;
 }
 pre .function,
 pre .python .decorator,
@@ -732,11 +732,11 @@ pre .ruby .title .keyword,
 pre .perl .sub,
 pre .javascript .title,
 pre .coffeescript .title {
-  color: highlight-blue;
+  color: #69c;
 }
 pre .keyword,
 pre .javascript .function {
-  color: highlight-purple;
+  color: #c9c;
 }
 html,
 body {
@@ -1055,7 +1055,7 @@ body {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #b34171;
+  background: #a398ff;
 }
 .sidebar-nav {
   margin: 0;
