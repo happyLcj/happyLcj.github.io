@@ -37,19 +37,16 @@
   <link rel="shorticon icon" type="image/x-icon" href="/img/HB.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="01背包有N件物品和一个容量为V的背包。第i件物品的费用为c[i]，价值为w[i]求解将哪些物品装入背包可使价值总和最大？
-基本思路这是最基础的背包问题，特点是：每种物品仅有一件，要么选择放，要么不放。">
+<meta name="description" content="01背包有N件物品和一个容量为V的背包。第i件物品的费用为c[i]，价值为w[i]求解将哪些物品装入背包可使价值总和最大？">
 <meta property="og:type" content="article">
 <meta property="og:title" content="动态规划之背包问题">
 <meta property="og:url" content="http://happylcj.github.io/2015/08/12/动态规划之背包问题/index.html">
 <meta property="og:site_name" content="happy_lcj">
-<meta property="og:description" content="01背包有N件物品和一个容量为V的背包。第i件物品的费用为c[i]，价值为w[i]求解将哪些物品装入背包可使价值总和最大？
-基本思路这是最基础的背包问题，特点是：每种物品仅有一件，要么选择放，要么不放。">
-<meta property="og:updated_time" content="2015-08-14T05:47:12.145Z">
+<meta property="og:description" content="01背包有N件物品和一个容量为V的背包。第i件物品的费用为c[i]，价值为w[i]求解将哪些物品装入背包可使价值总和最大？">
+<meta property="og:updated_time" content="2015-08-14T05:51:49.323Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="动态规划之背包问题">
-<meta name="twitter:description" content="01背包有N件物品和一个容量为V的背包。第i件物品的费用为c[i]，价值为w[i]求解将哪些物品装入背包可使价值总和最大？
-基本思路这是最基础的背包问题，特点是：每种物品仅有一件，要么选择放，要么不放。">
+<meta name="twitter:description" content="01背包有N件物品和一个容量为V的背包。第i件物品的费用为c[i]，价值为w[i]求解将哪些物品装入背包可使价值总和最大？">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -209,8 +206,8 @@
       
 
       
-        <span itemprop="articleBody"><h2 id="01背包">01背包</h2><p>有N件物品和一个容量为V的背包。第i件物品的费用为c[i]，价值为w[i]<br>求解将哪些物品装入背包可使价值总和最大？</p>
-<h3 id="基本思路">基本思路</h3><p>这是最基础的背包问题，特点是：每种物品仅有一件，要么选择放，要么不放。<br><a id="more"></a><br>用子问题定义状态：即f[i][v]表示前i件物品恰放入一个容量为v的背包可获得的最大价值<br>则状态转移方程为：<br>$$f[i][v]=max(f[i-1][v],f[i-1][v-c[i]]+w[i])$$<br>即若只考虑第i件物品的策略(放与不放)，那么久转化为一个只牵扯前i-1件物品的问题<br>若不放第i件物品，那么就转化为前i-1件物品放入容量为v的背包获得的最大价值，为f[i-1][v]<br>若放第i件物体，那么问题就转化为前i-1件物品放入剩下的容量为v-c[i]的背包中，获得的最大<br>价值为f[i-1][v-c[i]]再加上放第i件物品获得的价值w[i]。</p>
+        <span itemprop="articleBody"><h2 id="01背包">01背包</h2><p>有N件物品和一个容量为V的背包。第i件物品的费用为c[i]，价值为w[i]<br>求解将哪些物品装入背包可使价值总和最大？<br><a id="more"></a></p>
+<h3 id="基本思路">基本思路</h3><p>这是最基础的背包问题，特点是：每种物品仅有一件，要么选择放，要么不放。<br>用子问题定义状态：即f[i][v]表示前i件物品恰放入一个容量为v的背包可获得的最大价值<br>则状态转移方程为：<br>$$f[i][v]=max(f[i-1][v],f[i-1][v-c[i]]+w[i])$$<br>即若只考虑第i件物品的策略(放与不放)，那么久转化为一个只牵扯前i-1件物品的问题<br>若不放第i件物品，那么就转化为前i-1件物品放入容量为v的背包获得的最大价值，为f[i-1][v]<br>若放第i件物体，那么问题就转化为前i-1件物品放入剩下的容量为v-c[i]的背包中，获得的最大<br>价值为f[i-1][v-c[i]]再加上放第i件物品获得的价值w[i]。</p>
 <h3 id="优化空间复杂度">优化空间复杂度</h3><p>以上方法的时间和空间复杂度均为O(V*N)，其中空间复杂度可以优化为O(V)<br>f[i][v]是由f[i-1][v]和f[i-1][v-c[i]]两个子问题递推出来的，即f[i][v]只与前一状态有关<br>可以用一维数组 f[v]来表示容量为v时的最大价值，f[v]=max(f[v],f[v-c[i]]+w[i])<br>这样v需要从大到小逆序更新，现在的f[v-c[i]]相当于原来的f[i-1][v-c[i]]，若v从小到大顺序<br>更新，f[i][v]就由f[i][v-c[i]]推得，与题意不符，但它确实完全背包的解决方案</p>
 <h3 id="01背包代码">01背包代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">zeroOne</span><span class="params">(<span class="keyword">int</span> cost,<span class="keyword">int</span> weight)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=V;i&gt;=v[i];i--)</span><br><span class="line">        f[i]=max(f[v],f[v-c[i]]+w[i]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    zeroOne(c[i],w[i]);</span><br></pre></td></tr></table></figure>
 <h3 id="初始化细节问题">初始化细节问题</h3><p>若没有要求必须将背包装满，而是只希望价值尽量大，初始化时应该将f[0…V]全设为0<br>若要求背包恰好装满，则要将f[0]=0，其他赋为负无穷，因为背包为0可由0件物品恰好装满，得到的价值为0</p>
