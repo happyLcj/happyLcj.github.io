@@ -28,7 +28,7 @@
 
 
 
-  <meta name="keywords" content="快捷键," />
+  <meta name="keywords" content="背包," />
 
 
 
@@ -37,17 +37,19 @@
   <link rel="shorticon icon" type="image/x-icon" href="/img/HB.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="Sublime 功能强大，有很多快捷键我觉得很方便的是多行编辑，同时修改多处">
+<meta name="description" content="01背包有N件物品和一个容量为V的背包。第i件物品的费用为c[i]，价值为w[i]求解将哪些物品装入背包可使价值总和最大？
+基本思路这是最基础的背包问题，特点是：每种物品仅有一件，要么选择放，要么不放。用子问题定义状态：即f[i][v]表示前i件物品恰放入一个容量为v的背包可获得的最大价值则状态转移方程为：f[i][v]=max(f[i-1][v],f[i-1][v-c[i]]+w[i])即若只考">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Sublime Text3 常用快捷键">
-<meta property="og:url" content="http://happylcj.github.io/2015/07/29/Sublime Text 3 常用快捷键/index.html">
+<meta property="og:title" content="动态规划之背包问题">
+<meta property="og:url" content="http://happylcj.github.io/2015/08/12/动态规划之背包问题/index.html">
 <meta property="og:site_name" content="happy_lcj">
-<meta property="og:description" content="Sublime 功能强大，有很多快捷键我觉得很方便的是多行编辑，同时修改多处">
-<meta property="og:image" content="http://happylcj.github.io/img/sublime.png">
-<meta property="og:updated_time" content="2015-08-12T07:11:46.531Z">
+<meta property="og:description" content="01背包有N件物品和一个容量为V的背包。第i件物品的费用为c[i]，价值为w[i]求解将哪些物品装入背包可使价值总和最大？
+基本思路这是最基础的背包问题，特点是：每种物品仅有一件，要么选择放，要么不放。用子问题定义状态：即f[i][v]表示前i件物品恰放入一个容量为v的背包可获得的最大价值则状态转移方程为：f[i][v]=max(f[i-1][v],f[i-1][v-c[i]]+w[i])即若只考">
+<meta property="og:updated_time" content="2015-08-12T10:18:42.013Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sublime Text3 常用快捷键">
-<meta name="twitter:description" content="Sublime 功能强大，有很多快捷键我觉得很方便的是多行编辑，同时修改多处">
+<meta name="twitter:title" content="动态规划之背包问题">
+<meta name="twitter:description" content="01背包有N件物品和一个容量为V的背包。第i件物品的费用为c[i]，价值为w[i]求解将哪些物品装入背包可使价值总和最大？
+基本思路这是最基础的背包问题，特点是：每种物品仅有一件，要么选择放，要么不放。用子问题定义状态：即f[i][v]表示前i件物品恰放入一个容量为v的背包可获得的最大价值则状态转移方程为：f[i][v]=max(f[i-1][v],f[i-1][v-c[i]]+w[i])即若只考">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -57,7 +59,7 @@
   };
 </script>
 
-  <title> Sublime Text3 常用快捷键 | happy_lcj </title>
+  <title> 动态规划之背包问题 | happy_lcj </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -164,7 +166,7 @@
           
           
             
-              Sublime Text3 常用快捷键
+              动态规划之背包问题
             
           
         </h1>
@@ -173,11 +175,26 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-07-29T18:00:00+08:00" content="2015-07-29">
-            2015-07-29
+          <time itemprop="dateCreated" datetime="2015-08-12T18:16:44+08:00" content="2015-08-12">
+            2015-08-12
           </time>
         </span>
 
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/背包/" itemprop="url" rel="index">
+                  <span itemprop="name">背包</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
         
 
         
@@ -192,12 +209,17 @@
       
 
       
-        <span itemprop="articleBody"><p>Sublime 功能强大，有很多快捷键<br>我觉得很方便的是多行编辑，同时修改多处<br><img src="/img/sublime.png" alt="sublime"><br><a id="more"></a></p>
-<h3 id="多行编辑">多行编辑</h3><p>Ctrl+D 选词 (反复按快捷键，即可继续向下同时选中下一个相同的文本进行同时编辑)<br>Ctrl+鼠标左键 可以同时选择要编辑的多处文本<br>Shift+鼠标右键 按着不放拖动鼠标，可以竖向多行选择词语，按上述方式选中后编辑即可<br>Alt+F3 选中文本按下快捷键，即可一次性选择全部的相同文本进行同时编辑</p>
-<h3 id="选择">选择</h3><p>Ctrl+L 选中整行<br>Ctrl+M 光标移动至括号内结束或开始的位置<br>Ctrl+Shift+M 选中括号内的内容(继续按会选择父括号)<br>Ctrl+K+0 展开所有折叠代码。<br>Ctrl+Shift+[ 选中代码，按下快捷键，折叠代码。<br>Ctrl+Shift+] 选中代码，按下快捷键，展开代码。<br>shift+↑ 向上选中多行。<br>shift+↓ 向下选中多行。<br>Shift+← 向左选中文本。<br>Shift+→ 向右选中文本。<br>Ctrl+← 向左单位性地移动光标，快速移动光标。<br>Ctrl+→ 向右单位性地移动光标，快速移动光标。<br>Ctrl+Shift+← 向左单位性地选中文本。<br>Ctrl+Shift+→ 向右单位性地选中文本。<br>Ctrl+Shift+↑ 将光标所在行和上一行代码互换（将光标所在行插入到上一行之前）。<br>Ctrl+Shift+↓ 将光标所在行和下一行代码互换（将光标所在行插入到下一行之后）。</p>
-<h3 id="编辑">编辑</h3><p>Ctrl+Z 撤销<br>Ctrl+Y 恢复撤销<br>Ctrl+K+U 改为大写<br>Ctrl+K+L 改为小写<br>Ctrl+/ 注释单行。<br>Ctrl+Shift+/ 注释多行。<br>Ctrl+Shift+K 删除整行<br>Ctrl+KK 从光标处删除至行尾<br>Ctrl+K Backspace 从光标处删除至行首<br>Ctrl+T 词互换 选中多处后按此键<br>Ctrl+Shift+↑可以移动此行代码，与上行互换<br>Ctrl+Shift+↓可以移动此行代码，与下行互换<br>Ctrl+Enter 插入行后（快速换行）<br>Ctrl+Shift+Enter 在上一行插入新行<br>Ctrl+Shift+D 复制光标所在整行，插入在该行之前<br>Ctrl+J 合并行（已选择需要合并的多行时）<br>Ctrl+F2 设置书签<br>F6 单词检测拼写</p>
-<h3 id="查找">查找</h3><p>Ctrl+F 打开底部搜索框，查找关键字。<br>ctrl+shift+F 在文件夹内查找，与普通编辑器不同的地方是sublime允许添加多个文件夹进行查找<br>Ctrl+P 查找当前项目中的文件<br>Ctrl+G 输入行数，跳转到相应的行<br>Ctrl+Shift+P 打开命令框</p>
-<h3 id="显示">显示</h3><p>Ctrl+Shift+分屏序号 将当前焦点页分配到分屏序号页<br>Alt+Shift+1（非小键盘）窗口分屏，恢复默认1屏<br>Alt+Shift+2 左右分屏-2列<br>Alt+Shift+3 左右分屏-3列<br>Alt+Shift+4 左右分屏-4列<br>Alt+Shift+5 等分4屏<br>Alt+Shift+8 垂直分屏-2屏<br>Alt+Shift+9 垂直分屏-3屏<br>Ctrl+K+B 开启/关闭侧边栏。<br>F11 全屏模式<br>Shift+F11 免打扰模式<br>Ctrl+Tab 按文件浏览过的顺序，切换当前窗口的标签页。<br>Ctrl+PageDown 向左切换当前窗口的标签页。<br>Ctrl+PageUp 向右切换当前窗口的标签页。<br>Ctrl+Alt+↑(↓\←\→)  屏幕翻转</p>
+        <span itemprop="articleBody"><h2 id="01背包">01背包</h2><p>有N件物品和一个容量为V的背包。第i件物品的费用为c[i]，价值为w[i]<br>求解将哪些物品装入背包可使价值总和最大？</p>
+<h3 id="基本思路">基本思路</h3><p>这是最基础的背包问题，特点是：每种物品仅有一件，要么选择放，要么不放。<br>用子问题定义状态：即f[i][v]表示前i件物品恰放入一个容量为v的背包可获得的最大价值<br>则状态转移方程为：f[i][v]=max(f[i-1][v],f[i-1][v-c[i]]+w[i])<br>即若只考虑第i件物品的策略(放与不放)，那么久转化为一个只牵扯前i-1件物品的问题<br>若不放第i件物品，那么就转化为前i-1件物品放入容量为v的背包获得的最大价值，为f[i-1][v]<br>若放第i件物体，那么问题就转化为前i-1件物品放入剩下的容量为v-c[i]的背包中，获得的最大价值为<br>f[i-1][v-c[i]]再加上放第i件物品获得的价值w[i]。</p>
+<h3 id="优化空间复杂度">优化空间复杂度</h3><p>以上方法的时间和空间复杂度均为O(V*N)，其中空间复杂度可以优化为O(V)<br>f[i][v]是由f[i-1][v]和f[i-1][v-c[i]]两个子问题递推出来的，即f[i][v]只与前一状态有关<br>可以用一维数组 f[v]来表示容量为v时的最大价值，f[v]=max(f[v],f[v-c[i]]+w[i])<br>这样v需要从大到小逆序更新，现在的f[v-c[i]]相当于原来的f[i-1][v-c[i]]，若v从小到大顺序更新，<br>f[i][v]就由f[i][v-c[i]]推得，与题意不符，但它确实完全背包的解决方案</p>
+<h3 id="01背包代码">01背包代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">zeroOne</span><span class="params">(<span class="keyword">int</span> cost,<span class="keyword">int</span> weight)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=V;i&gt;=v[i];i--)</span><br><span class="line">        f[i]=max(f[v],f[v-c[i]]+w[i]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    zeroOne(c[i],w[i]);</span><br></pre></td></tr></table></figure>
+<h3 id="初始化细节问题">初始化细节问题</h3><p>若没有要求必须将背包装满，而是只希望价值尽量大，初始化时应该将f[0…V]全设为0<br>若要求背包恰好装满，则要将f[0]=0，其他赋为负无穷，因为背包为0可由0件物品恰好装满，得到的价值为0</p>
+<h2 id="完全背包">完全背包</h2><p>有N种物品和一个容量为V的背包，每种物品都有无限件，第i种物品的费用为c[i]，价值为w[i]<br>求解将哪些物品装入背包可使价值总和最大？</p>
+<h3 id="基本思路-1">基本思路</h3><p>这个问题类似于01背包，所不同的是每种物品有无限件。从每种物品的角度考虑，与它相关的策略并不是<br>取与不取，而是取0件、1件、2件…等很多种情况。如果仍然用01背包求解，f[i][v]为将前i种物品放入<br>容量为v的背包所得的最大价值，则状态转移方程为：<br>$$f[i][v]=max(f[i-1][v-k*c[i]]+k*w[i]) (0 leq k*c[i] leq v)$$<br>但是这个复杂度很高，可以简单的优化一下<br>若两件物品i,j满足c[i] leq c[j],w[i] geq w[j],则将物品j可以去掉，不用考虑<br>但是这样最坏情况下效率还是很低，一个更高效的方法为转化为二进制思想的01背包<br>将第i种物品拆成费用为c[i]*2^k,价值为w[i]*z^k的若干件物品<br>但是有一个最高效的方法：前面01背包中已提到，状态转移方程为<br>f[i][v]=max(f[i-1][v],f[i][v-c[i]]+w[i])</p>
+<h3 id="完全背包代码">完全背包代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">complete</span><span class="params">(<span class="keyword">int</span> cost,<span class="keyword">int</span> weight)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=v[i];i&lt;=V;i++)</span><br><span class="line">        f[i]=max(f[v],f[v-c[i]]+w[i]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    zeroOne(c[i],w[i]);</span><br></pre></td></tr></table></figure>
+<h2 id="多重背包">多重背包</h2><p>有N种物品和一个容量为V的背包。第i种物品的数量为n[i],的费用为c[i]，价值为w[i]<br>求解将哪些物品装入背包可使价值总和最大？</p>
+<h3 id="基本思路-2">基本思路</h3><p>多重背包和完全背包很类似,即对于第i件物品，有n[i]+1种策略，取0件、1件、2件…n[i]件<br>状态转移方程为 $ f[i][v]=max(f[i-1][v-k*c[i]]+k*w[i]) (0 leq k leq n[i]) $<br>复杂度也很高，为了高效的解决，可以转化为完全背包和二进制思想的完全背包</p>
+<h3 id="多重背包代码">多重背包代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">multiple</span><span class="params">(<span class="keyword">int</span> cost <span class="keyword">int</span> weight,<span class="keyword">int</span> amount)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(cost*amount&gt;=V)&#123;</span><br><span class="line">        complete(cost,weight);</span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">     <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;amount;k*=<span class="number">2</span>)&#123;  </span><br><span class="line">        zeroone(k*cost,k*weight);  </span><br><span class="line">        amount-=k;  </span><br><span class="line">    &#125;  </span><br><span class="line">    zeroone(amount*cost,amount*weight);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </span>
       
     </div>
@@ -206,7 +228,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/快捷键/" rel="tag">#快捷键</a>
+            <a href="/tags/背包/" rel="tag">#背包</a>
           
         </div>
       
@@ -215,13 +237,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/08/04/记忆化搜索专题训练/" rel="prev">记忆化搜索专题训练</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/07/29/2015-Hdu-多校赛第三场/" rel="next">2015 Hdu 多校赛第三场</a>
+              <a href="/2015/08/07/2015-Hdu-多校赛第六场/" rel="next">2015 Hdu 多校赛第六场</a>
             
           </div>
         </div>
@@ -342,7 +362,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#多行编辑"><span class="nav-number">1.</span> <span class="nav-text">多行编辑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择"><span class="nav-number">2.</span> <span class="nav-text">选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编辑"><span class="nav-number">3.</span> <span class="nav-text">编辑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查找"><span class="nav-number">4.</span> <span class="nav-text">查找</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#显示"><span class="nav-number">5.</span> <span class="nav-text">显示</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#01背包"><span class="nav-number">1.</span> <span class="nav-text">01背包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本思路"><span class="nav-number">1.1.</span> <span class="nav-text">基本思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化空间复杂度"><span class="nav-number">1.2.</span> <span class="nav-text">优化空间复杂度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#01背包代码"><span class="nav-number">1.3.</span> <span class="nav-text">01背包代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化细节问题"><span class="nav-number">1.4.</span> <span class="nav-text">初始化细节问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完全背包"><span class="nav-number">2.</span> <span class="nav-text">完全背包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本思路-1"><span class="nav-number">2.1.</span> <span class="nav-text">基本思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#完全背包代码"><span class="nav-number">2.2.</span> <span class="nav-text">完全背包代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多重背包"><span class="nav-number">3.</span> <span class="nav-text">多重背包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本思路-2"><span class="nav-number">3.1.</span> <span class="nav-text">基本思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多重背包代码"><span class="nav-number">3.2.</span> <span class="nav-text">多重背包代码</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
