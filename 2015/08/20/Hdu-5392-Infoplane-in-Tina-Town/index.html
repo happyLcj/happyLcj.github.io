@@ -28,7 +28,7 @@
 
 
 
-  <meta name="keywords" content="树状数组," />
+  <meta name="keywords" content="置换群," />
 
 
 
@@ -37,17 +37,19 @@
   <link rel="shorticon icon" type="image/x-icon" href="/img/HB.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="树状数组(BIT)是与线段树类似的数据结构，用来处理区间修改查询问题">
+<meta name="description" content="链接Infoplane in Tina Town
+题意给定n个数，第i个数为a表示将第i个数变为a，问最少经过多少次变换可使这n个数从{1,2,…n}再变为{1,2,…n}">
 <meta property="og:type" content="article">
-<meta property="og:title" content="树状数组">
-<meta property="og:url" content="http://happylcj.github.io/2015/08/15/树状数组/index.html">
+<meta property="og:title" content="Hdu 5392 Infoplane in Tina Town">
+<meta property="og:url" content="http://happylcj.github.io/2015/08/20/Hdu-5392-Infoplane-in-Tina-Town/index.html">
 <meta property="og:site_name" content="happy_lcj">
-<meta property="og:description" content="树状数组(BIT)是与线段树类似的数据结构，用来处理区间修改查询问题">
-<meta property="og:image" content="http://happylcj.github.io/img/BIT.png">
-<meta property="og:updated_time" content="2015-08-15T08:50:20.648Z">
+<meta property="og:description" content="链接Infoplane in Tina Town
+题意给定n个数，第i个数为a表示将第i个数变为a，问最少经过多少次变换可使这n个数从{1,2,…n}再变为{1,2,…n}">
+<meta property="og:updated_time" content="2015-08-20T03:57:32.491Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="树状数组">
-<meta name="twitter:description" content="树状数组(BIT)是与线段树类似的数据结构，用来处理区间修改查询问题">
+<meta name="twitter:title" content="Hdu 5392 Infoplane in Tina Town">
+<meta name="twitter:description" content="链接Infoplane in Tina Town
+题意给定n个数，第i个数为a表示将第i个数变为a，问最少经过多少次变换可使这n个数从{1,2,…n}再变为{1,2,…n}">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -57,7 +59,7 @@
   };
 </script>
 
-  <title> 树状数组 | happy_lcj </title>
+  <title> Hdu 5392 Infoplane in Tina Town | happy_lcj </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -164,7 +166,7 @@
           
           
             
-              树状数组
+              Hdu 5392 Infoplane in Tina Town
             
           
         </h1>
@@ -173,8 +175,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-08-15T13:41:52+08:00" content="2015-08-15">
-            2015-08-15
+          <time itemprop="dateCreated" datetime="2015-08-20T11:06:24+08:00" content="2015-08-20">
+            2015-08-20
           </time>
         </span>
 
@@ -183,8 +185,8 @@
             &nbsp; | &nbsp; 分类于
             
               <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/树状数组/" itemprop="url" rel="index">
-                  <span itemprop="name">树状数组</span>
+                <a href="/categories/HDU/" itemprop="url" rel="index">
+                  <span itemprop="name">HDU</span>
                 </a>
               </span>
 
@@ -207,11 +209,10 @@
       
 
       
-        <span itemprop="articleBody"><p>树状数组(BIT)是与线段树类似的数据结构，用来处理区间修改查询问题<br><img src="/img/BIT.png" alt="BIT"><br><a id="more"></a></p>
-<h2 id="一维树状数组">一维树状数组</h2><p>如上图所示，若用树状数组求a数组的和<br>c[1]=a[1];<br>c[2]=a[1]+a[2];<br>c[3]=a[3];<br>c[4]=a[1]+a[2]+a[3]+a[4];<br>c[5]=a[5];<br>c[6]=a[5]+a[6];<br>c[7]=a[7];<br>c[8]= a[1]+a[2]+a[3]+a[4]+a[5]+a[6]+a[7]+a[8];<br>将十进制化成二进制，然后观察这些二进制数最右边1的位置：<br>1 —&gt; 00000001    —&gt;1<br>2 —&gt; 00000010    —&gt;2<br>3 —&gt; 00000011    —&gt;1<br>4 —&gt; 00000100    —&gt;4<br>5 —&gt; 00000101    —&gt;1<br>6 —&gt; 00000110    —&gt;2<br>7 —&gt; 00000111    —&gt;1<br>8 —&gt; 00001000    —&gt;8<br>由此我们可以得出结论：c[i]=a[i]+a[i-1]+…+a[i-k+1]<br>其中k为i的二进制数中从右往左第一个1的权值 即k=lowbit(i)=i&amp;(-i)<br>证明：设A’为A的二进制反码，i的二进制表示成A1B，其中A不管，B为全0序列。<br>那么-i=A’0B’+1。由于B为全0序列，那么B’就是全1序列，所以-i=A’1B，所以：<br>i&amp;(-i)= A1B&amp; A’1B=1B，即k=i&amp;(-i)<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> pos,<span class="keyword">int</span> x)</span>  <span class="comment">//将a[pos]增加x</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=pos;i&lt;=n;i+=lowbit(i))</span><br><span class="line">        c[i]+=x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> x)</span>  <span class="comment">//查询[1,n]的和</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=x;i&gt;=<span class="number">1</span>;i-=lowbit(i))</span><br><span class="line">        ans+=c[i];</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>若查询[l,r]的和，可以先查询sum[1,r],sum[1,l-1],sum[l,r]=sum[1,r]-sum[1,l-1]</p>
-<h2 id="二维树状数组">二维树状数组</h2><p>推广到二维数组<br>c[1][1]=a[1][1];<br>c[1][2]=a[1][1]+a[1][2];<br>c[1][3]=a[1][3];<br>c[1][4]=a[1][1]+a[1][2]+a[1][3]+a[1][4];<br>c[1][5]=a[1][5];<br>c[1][6]=a[1][5]+a[1][6];<br>c[1][7]=a[1][7];<br>…<br>c[1][1]=a[1][1];<br>c[2][1]=a[1][1]+a[2][1];<br>c[3][1]=a[3][1];<br>c[4][1]=a[1][1]+a[2][1]+a[3][1]+a[4][1];<br>c[5][1]=a[5][1];<br>c[6][1]=a[5][1]+a[6][1];<br>c[7][1]=a[7][1];<br>…<br>c[2][6]=a[1][5]+a[1][6]+a[2][5]+a[2][6];<br>可得对于c[i][j],k1=lowbit(i)=i&amp;(-i),i可取{i,i-1,…,i-k1+1},<br>k2=lowbit(j)=j&amp;(-j),j可取{j,j-1,…,j-k2+1}<br>c[i][j]=∑c[i,{j,j-1,…j-k2+1}]+∑c[i-1,{j,j-1,…j-k2+1}]+∑c[i-k1+1,{j,j-1,…j-k2+1}]<br>对于W*H的二维BIT只需建立H个大小为x轴方向元素个数W个BIT，然后把这些BIT通过y轴方向管理起来就可以了。也就是说，y方向的BIT的每个元素不是整数，而是一个x轴方向的BIT。<br>这样所有操作的复杂度为O(logW*logH).用同样的方法可以扩展到更高维度的情况。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> val)</span> <span class="comment">//将a[x][y]的值增加val</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = x; i &lt;=n; i += lowbit(i))</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = y; j &lt;=n; j += lowbit(j)) </span><br><span class="line">            c[i][j] += val;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span>    <span class="comment">//查询 1&lt;=i&lt;=x,1&lt;=j&lt;=y的和</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = x; i &gt;= <span class="number">1</span>; i -= lowbit(i))</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = y; j &gt;= <span class="number">1</span>; j -= lowbit(j))</span><br><span class="line">            ans += c[i][j];</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>若需要求l1&lt;=x&lt;=r1,l2&lt;=y&lt;=r2的和<br>s1=sum[1&lt;=i&lt;=r1  ,1&lt;=j&lt;=r2]<br>s2=sum[1&lt;=i&lt;=l1-1,1&lt;=j&lt;=r2]<br>s3=sum[1&lt;=i&lt;=r1  ,1&lt;=j&lt;=l2-1]<br>s4=sum[1&lt;=i&lt;=l1-1,1&lt;=j&lt;=l2-1]<br>根据容斥定理得 sum[l1&lt;=x&lt;=r1,l2&lt;=y&lt;=r2]=s1-s2-s3+s4</p>
+        <span itemprop="articleBody"><h3 id="链接">链接</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5392" target="_blank" rel="external">Infoplane in Tina Town</a></p>
+<h3 id="题意">题意</h3><p>给定n个数，第i个数为a表示将第i个数变为a，问最少经过多少次变换可使这n个数从<br>{1,2,…n}再变为{1,2,…n}<a id="more"></a></p>
+<h3 id="分析">分析</h3><p>置换群求最小置换周期<br>对于每个元素可求出其最小置换周期，整个序列的最小置换周期为所有元素周期的最小公倍数<br>但是求最小公倍数lcm(a,b)时如果先求最大公约数gcd(a,b),再用a/gcd(a,b)*b会超时<br>可以用分解质因子的方法<br>先把这几个数的质因数写出来，最小公倍数等于它们所有的质因数的乘积（如果有几个质因数相同，则比较两数中哪个数有该质因数的个数较多，乘较多的次数）</p>
+<h3 id="参考代码">参考代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span>&lt;stdio.h&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span>&lt;string.h&gt;</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span>  LL;</span><br><span class="line"><span class="keyword">const</span> LL mod=<span class="number">3221225473L</span>L;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">3000100</span>;</span><br><span class="line"><span class="keyword">struct</span> stu&#123;</span><br><span class="line">    <span class="keyword">int</span> num,per;</span><br><span class="line">&#125;a[N];</span><br><span class="line"><span class="keyword">int</span> n,cnt[N];</span><br><span class="line"><span class="keyword">bool</span> vis[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">calPer</span><span class="params">()</span><span class="comment">//计算每个元素的周期</span></span><br><span class="line"></span>&#123; </span><br><span class="line">    <span class="built_in">memset</span>(vis,<span class="keyword">false</span>,<span class="keyword">sizeof</span>(vis));</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!vis[i])&#123;</span><br><span class="line">            vis[i]=<span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">int</span> t=a[i].num;</span><br><span class="line">            <span class="keyword">int</span> cnt=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span>(t!=i)&#123;</span><br><span class="line">                vis[t]=<span class="keyword">true</span>;</span><br><span class="line">                cnt++;</span><br><span class="line">                t=a[t].num;</span><br><span class="line">            &#125;</span><br><span class="line">            a[i].per=cnt;</span><br><span class="line">            <span class="comment">//求i的循环节，i再次变为i经过的数周期都相同</span></span><br><span class="line">            <span class="comment">//相同数的最小公倍数相同，只需算一次就可以，否则会超时</span></span><br><span class="line">            <span class="comment">//t=a[i].num;</span></span><br><span class="line">            <span class="comment">// while(t!=i)&#123;</span></span><br><span class="line">                <span class="comment">//a[t].per=cnt;</span></span><br><span class="line">                <span class="comment">//t=a[t].num;</span></span><br><span class="line">            <span class="comment">//&#125;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">calFactor</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(cnt,<span class="number">0</span>,<span class="keyword">sizeof</span>(cnt));</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> temp=a[i].per;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">2</span>;j&lt;=a[i].per;j++)&#123;</span><br><span class="line">            <span class="keyword">int</span> num=<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span>(temp%j==<span class="number">0</span>)&#123;</span><br><span class="line">                num++;</span><br><span class="line">                temp/=j;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(num&gt;cnt[j])</span><br><span class="line">                cnt[j]=num;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">LL <span class="title">powMod</span><span class="params">(LL a,LL b)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    LL ans=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(b)&#123;</span><br><span class="line">        <span class="keyword">if</span>(b&amp;<span class="number">1</span>) ans=ans*a%mod;</span><br><span class="line">        a=a*a%mod;</span><br><span class="line">        b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> T;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</span><br><span class="line">    <span class="keyword">while</span>(T--)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i].num);</span><br><span class="line">            a[i].per=-<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        calPer();</span><br><span class="line">        calFactor();</span><br><span class="line">        LL ans=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line">            ans=(ans*powMod(i,cnt[i]))%mod;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%I64d\n"</span>,ans);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </span>
       
     </div>
@@ -220,7 +221,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/树状数组/" rel="tag">#树状数组</a>
+            <a href="/tags/置换群/" rel="tag">#置换群</a>
           
         </div>
       
@@ -229,13 +230,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/08/19/2015-Hdu-多校赛第九场/" rel="prev">2015 Hdu 多校赛第九场</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/08/15/2015-Hdu-多校赛第八场/" rel="next">2015 Hdu 多校赛第八场</a>
+              <a href="/2015/08/19/2015-Hdu-多校赛第九场/" rel="next">2015 Hdu 多校赛第九场</a>
             
           </div>
         </div>
@@ -356,7 +355,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一维树状数组"><span class="nav-number">1.</span> <span class="nav-text">一维树状数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二维树状数组"><span class="nav-number">2.</span> <span class="nav-text">二维树状数组</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#链接"><span class="nav-number">1.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题意"><span class="nav-number">2.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">3.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考代码"><span class="nav-number">4.</span> <span class="nav-text">参考代码</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
