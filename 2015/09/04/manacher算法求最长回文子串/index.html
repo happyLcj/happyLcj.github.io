@@ -1,0 +1,633 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="深深的话浅浅说，长长的路慢慢走" />
+
+
+
+  <meta name="keywords" content="Hexo,next" />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/img/HB.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="最长回文子串题目给定一个字符串，求它的最长回文子串的长度。
+分析与解法最容易想到的办法是枚举所有的子串，分别判断其是否为回文。这个思路初看起来是正确的，但却做了很多无用功，如果一个长的子串包含另一个短一些的子串，那么对子串的回文判断其实是不需要的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="manacher算法求最长回文子串">
+<meta property="og:url" content="http://happylcj.github.io/2015/09/04/manacher算法求最长回文子串/index.html">
+<meta property="og:site_name" content="happy_lcj">
+<meta property="og:description" content="最长回文子串题目给定一个字符串，求它的最长回文子串的长度。
+分析与解法最容易想到的办法是枚举所有的子串，分别判断其是否为回文。这个思路初看起来是正确的，但却做了很多无用功，如果一个长的子串包含另一个短一些的子串，那么对子串的回文判断其实是不需要的">
+<meta property="og:image" content="http://happylcj.github.io/img/manacher1.png">
+<meta property="og:image" content="http://happylcj.github.io/img/manacher2.png">
+<meta property="og:updated_time" content="2015-09-04T02:43:45.573Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="manacher算法求最长回文子串">
+<meta name="twitter:description" content="最长回文子串题目给定一个字符串，求它的最长回文子串的长度。
+分析与解法最容易想到的办法是枚举所有的子串，分别判断其是否为回文。这个思路初看起来是正确的，但却做了很多无用功，如果一个长的子串包含另一个短一些的子串，那么对子串的回文判断其实是不需要的">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'hide'
+  };
+</script>
+
+  <title> manacher算法求最长回文子串 | happy_lcj </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">happy_lcj</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              manacher算法求最长回文子串
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-09-04T09:42:13+08:00" content="2015-09-04">
+            2015-09-04
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h2 id="最长回文子串">最长回文子串</h2><h3 id="题目">题目</h3><p>给定一个字符串，求它的最长回文子串的长度。</p>
+<h3 id="分析与解法">分析与解法</h3><p>最容易想到的办法是枚举所有的子串，分别判断其是否为回文。这个思路初看起来是正确的，但却做了很多无用功，如果一个长的子串包含另一个短一些的子串，那么对子串的回文判断其实是不需要的<br><a id="more"></a></p>
+<h3 id="解法一">解法一</h3><p>那么如何高效的进行判断呢？我们想想，如果一段字符串是回文，那么以某个字符为中心的前缀和后缀都是相同的，例如以一段回文串”aba”为例，以b为中心，它的前缀和后缀都是相同的，都是a。由此可见，我们可以枚举中心位置，然后再在该位置上用扩展法，记录并更新得到的最长的回文长度</p>
+<h3 id="枚举中心代码">枚举中心代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">palindrome</span><span class="params">(<span class="keyword">char</span> s[])</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> len=<span class="built_in">strlen</span>(s);</span><br><span class="line">    <span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> l=i,r=i;     <span class="comment">//回文串长度为奇数</span></span><br><span class="line">        <span class="keyword">while</span>(l&gt;=<span class="number">0</span>&amp;&amp;r&lt;len&amp;&amp;s[l]==s[r])&#123;</span><br><span class="line">            ans=max(ans,r-l+<span class="number">1</span>);</span><br><span class="line">            l--,r++;</span><br><span class="line">        &#125;</span><br><span class="line">        l=i,r=i+<span class="number">1</span>;      <span class="comment">//回文串长度为偶数</span></span><br><span class="line">        <span class="keyword">while</span>(l&gt;=<span class="number">0</span>&amp;&amp;r&lt;len&amp;&amp;s[l]==s[r])&#123;</span><br><span class="line">            ans=max(ans,r-l+<span class="number">1</span>);</span><br><span class="line">            l--,r++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="解法二：O(N)解法">解法二：O(N)解法</h3><p>在上文的解法一：枚举中心位置中，我们需要特别考虑字符串的长度是奇数还是偶数，所以导致我们在编写代码实现的时候要把奇数和偶数的情况分开编写，是否有一种方法，可以不用管长度是奇数还是偶数，而统一处理呢？比如是否能把所有的情况全部转换为奇数处理？<br>答案还是肯定的。这就是下面我们将要看到的Manacher算法，且这个算法求最长回文子串的时间复杂度是线性O(N)的。<br>首先通过在每个字符的两边都插入一个特殊的符号，将所有可能的奇数或偶数长度的回文子串都转换成了奇数长度。比如 abba 变成 #a#b#b#a#， aba变成 #a#b#a#。</p>
+<p>此外，为了进一步减少编码的复杂度，可以在字符串的开始加入另一个特殊字符(最后也有特殊字符空字符)，这样就不用特殊处理越界问题，比如$#a#b#a#。</p>
+<p>以字符串12212321为例，插入#和$这两个特殊符号，变成了 S[] = “$#1#2#2#1#2#3#2#1#”，然后用一个数组 P[i] 来记录以字符S[i]为中心的最长回文子串向左或向右扩张的长度（包括S[i]）。<br>比如S和P的对应关系：</p>
+<ul>
+<li>S  #  1  #  2  #  2  #  1  #  2  #  3  #  2  #  1  #</li>
+<li>P  1  2  1  2  5  2  1  4  1  2  1  6  1  2  1  2  1<br>可以看出，P[i]-1正好是原字符串中最长回文串的总长度，为5。<br>关键是怎么计算P[i],Manacher算法增加两个辅助变量id和mx，mx=max(k+P[k]) (k&gt;=0&amp;&amp;k<i)当k=id是mx取最大值，得到一个很重要的结论： 如果mx=""> i，那么P[i] &gt;= Min(P[2 * id - i], mx - i)<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//mx &gt; i，那么P[i] &gt;= MIN(P[2 * id - i], mx - i)</span></span><br><span class="line"><span class="comment">//故谁小取谁</span></span><br><span class="line"><span class="keyword">if</span> (mx - i &gt; P[<span class="number">2</span>*id - i])</span><br><span class="line">    P[i] = P[<span class="number">2</span>*id - i];</span><br><span class="line"><span class="keyword">else</span>  <span class="comment">//mx-i &lt;= P[2*id - i]</span></span><br><span class="line">    P[i] = mx - i;</span><br></pre></td></tr></table></figure>
+</i)当k=id是mx取最大值，得到一个很重要的结论：></li>
+</ul>
+<p>下面，令j = 2*id - i，也就是说j是i关于id的对称点。<br>当 mx - i &gt; P[j] 的时候，以S[j]为中心的回文子串包含在以S[id]为中心的回文子串中，由于i和j对称，以S[i]为中心的回文子串必然包含在以S[id]为中心的回文子串中，所以必有P[i] = P[j]；<br><img src="/img/manacher1.png" alt="manacher"><br>当 P[j] &gt;= mx - i 的时候，以S[j]为中心的回文子串不一定完全包含于以S[id]为中心的回文子串中，但是基于对称性可知，下图中两个绿框所包围的部分是相同的，也就是说以S[i]为中心的回文子串，其向右至少会扩张到mx的位置，也就是说 P[i] &gt;= mx - i。至于mx之后的部分是否对称，再具体匹配。<br><img src="/img/manacher2.png" alt="manacher"><br>此外，对于 mx &lt;= i 的情况，因为无法对 P[i]做更多的假设，只能让P[i] = 1，然后再去匹配。</p>
+<h3 id="Manacher算法代码">Manacher算法代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">manacher</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> id=<span class="number">0</span>,mx=<span class="number">0</span>,maxlen=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;s[i]!=<span class="string">'\0'</span>;i++)&#123;</span><br><span class="line">        p[i]=mx&gt;i?min(p[<span class="number">2</span>*id-i],mx-i):<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(s[i+p[i]]==s[i-p[i]])</span><br><span class="line">            p[i]++;</span><br><span class="line">        <span class="keyword">if</span>(i+p[i]&gt;mx)&#123;</span><br><span class="line">            mx=i+p[i];</span><br><span class="line">            id=i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(p[i]&gt;maxlen)  <span class="comment">//求最大回文长度</span></span><br><span class="line">            maxlen=p[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> maxlen-<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Hdu_3068_最长回文">Hdu 3068 最长回文</h2><h3 id="链接">链接</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=3068" target="_blank" rel="external">最长回文</a></p>
+<h3 id="参考代码">参考代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span>&lt;stdio.h&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span>&lt;string.h&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span>&lt;algorithm&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">240000</span>;</span><br><span class="line"><span class="keyword">char</span> s[N],t[N];</span><br><span class="line"><span class="keyword">int</span> p[N];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">manacher</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> len=<span class="built_in">strlen</span>(t);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=len;i++)&#123;</span><br><span class="line">        s[i*<span class="number">2</span>+<span class="number">1</span>]=<span class="string">'#'</span>;</span><br><span class="line">        s[i*<span class="number">2</span>+<span class="number">2</span>]=t[i];</span><br><span class="line">    &#125;</span><br><span class="line">    s[<span class="number">0</span>]=<span class="string">'$'</span>;</span><br><span class="line">    p[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> id=<span class="number">0</span>,mx=<span class="number">0</span>,maxlen=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">2</span>*len;i++)&#123;</span><br><span class="line">        p[i]=mx&gt;i?min(p[<span class="number">2</span>*id-i],mx-i):<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(s[i+p[i]]==s[i-p[i]])</span><br><span class="line">            p[i]++;</span><br><span class="line">        <span class="keyword">if</span>(i+p[i]&gt;mx)&#123;</span><br><span class="line">            mx=i+p[i];</span><br><span class="line">            id=i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(p[i]&gt;maxlen)</span><br><span class="line">            maxlen=p[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> maxlen-<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%s"</span>,t)!=EOF)&#123;</span><br><span class="line">        <span class="keyword">int</span> ans=manacher();</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/08/31/2015-Hdu-多校赛第十场/" rel="next">2015 Hdu 多校赛第十场</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/img/头像.jpg" alt="happy_lcj" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">happy_lcj</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">深深的话浅浅说，长长的路慢慢走</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">23</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/happyLcj" target="_blank">github</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/acm_code" target="_blank">csdn</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name">Links</p>
+            
+              <span class="links-of-author-item">
+              <a href="http://enumz.github.io/" target="_blank">Enumz's blog</a>
+              </span>
+            
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#最长回文子串"><span class="nav-number">1.</span> <span class="nav-text">最长回文子串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目"><span class="nav-number">1.1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析与解法"><span class="nav-number">1.2.</span> <span class="nav-text">分析与解法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解法一"><span class="nav-number">1.3.</span> <span class="nav-text">解法一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#枚举中心代码"><span class="nav-number">1.4.</span> <span class="nav-text">枚举中心代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解法二：O(N)解法"><span class="nav-number">1.5.</span> <span class="nav-text">解法二：O(N)解法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Manacher算法代码"><span class="nav-number">1.6.</span> <span class="nav-text">Manacher算法代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hdu_3068_最长回文"><span class="nav-number">2.</span> <span class="nav-text">Hdu 3068 最长回文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#链接"><span class="nav-number">2.1.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考代码"><span class="nav-number">2.2.</span> <span class="nav-text">参考代码</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">happy_lcj</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+    
+
+  
+
+
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/img/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>
