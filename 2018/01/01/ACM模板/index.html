@@ -37,17 +37,16 @@
   <link rel="shorticon icon" type="image/x-icon" href="/img/HB.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="考虑到第四场题目难度过大，加了两道水题结果就只做出这两道水题">
+<meta name="description" content="遇到就更新~~~">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2015 Hdu 多校赛第四场">
-<meta property="og:url" content="http://happylcj.github.io/2015/08/04/2015-Hdu-多校赛第四场/index.html">
+<meta property="og:title" content="ACM模板">
+<meta property="og:url" content="http://happylcj.github.io/2018/01/01/ACM模板/index.html">
 <meta property="og:site_name" content="happy_lcj">
-<meta property="og:description" content="考虑到第四场题目难度过大，加了两道水题结果就只做出这两道水题">
-<meta property="og:image" content="http://happylcj.github.io/img/XM-001.jpg">
-<meta property="og:updated_time" content="2015-08-19T11:14:04.543Z">
+<meta property="og:description" content="遇到就更新~~~">
+<meta property="og:updated_time" content="2015-09-06T01:38:51.540Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2015 Hdu 多校赛第四场">
-<meta name="twitter:description" content="考虑到第四场题目难度过大，加了两道水题结果就只做出这两道水题">
+<meta name="twitter:title" content="ACM模板">
+<meta name="twitter:description" content="遇到就更新~~~">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -57,7 +56,7 @@
   };
 </script>
 
-  <title> 2015 Hdu 多校赛第四场 | happy_lcj </title>
+  <title> ACM模板 | happy_lcj </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -164,7 +163,7 @@
           
           
             
-              2015 Hdu 多校赛第四场
+              ACM模板
             
           
         </h1>
@@ -173,8 +172,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-08-04T10:50:03+08:00" content="2015-08-04">
-            2015-08-04
+          <time itemprop="dateCreated" datetime="2018-01-01T00:00:00+08:00" content="2018-01-01">
+            2018-01-01
           </time>
         </span>
 
@@ -183,8 +182,8 @@
             &nbsp; | &nbsp; 分类于
             
               <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/HDU/" itemprop="url" rel="index">
-                  <span itemprop="name">HDU</span>
+                <a href="/categories/模板/" itemprop="url" rel="index">
+                  <span itemprop="name">模板</span>
                 </a>
               </span>
 
@@ -207,15 +206,11 @@
       
 
       
-        <span itemprop="articleBody"><p>考虑到第四场题目难度过大，加了两道水题<br>结果就只做出这两道水题<br><img src="/img/XM-001.jpg" alt="XM"><br><a id="more"></a></p>
-<h2 id="Hdu_5327_Olympiad">Hdu 5327 Olympiad</h2><h3 id="链接">链接</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5327" target="_blank" rel="external">Olympiad</a></p>
-<h3 id="题意">题意</h3><p>统计区间[a,b]内满足各位数字不同的数的个数</p>
-<h3 id="分析">分析</h3><p>多区间查询，若每次都计算个数效率非常低，可以预处理，先标记[1,100000]内每个数是否满足条件，再用s[i]累计区间[1,i]的满足条件的总个数<br>计算[a,b]的个数，只需用s[b]-s[a-1]即可</p>
-<h3 id="代码">代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span>&lt;stdio.h&gt;</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">100000</span>;</span><br><span class="line"><span class="keyword">int</span> s[N+<span class="number">10</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=N;i++)&#123;</span><br><span class="line">        <span class="keyword">bool</span> flag[<span class="number">10</span>]=&#123;<span class="keyword">false</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> t=i;</span><br><span class="line">        <span class="keyword">while</span>(t)&#123;</span><br><span class="line">            <span class="keyword">if</span>(flag[t%<span class="number">10</span>])</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            flag[t%<span class="number">10</span>]=<span class="keyword">true</span>;</span><br><span class="line">            t/=<span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        s[i]=s[i-<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">if</span>(!t)</span><br><span class="line">            s[i]++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    init();</span><br><span class="line">    <span class="keyword">int</span> T;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</span><br><span class="line">    <span class="keyword">while</span>(T--)&#123;</span><br><span class="line">        <span class="keyword">int</span> l,r;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;l,&amp;r);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,s[r]-s[l-<span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Hdu_5328_Problem_Killer">Hdu 5328 Problem Killer</h2><h3 id="链接-1">链接</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5328" target="_blank" rel="external">Problem Killer</a></p>
-<h3 id="题意-1">题意</h3><p>给定长度为n的数列，求最长的区间[l,r]满足<br>区间[l,r]形成的数列必须为等差数列或者等比数列</p>
-<h3 id="分析-1">分析</h3><p>等差数列公差相等，等比数列公比相等<br>可以求出原数列所有相邻两项的差和比，<br>然后求最长的连续相等序列的长度</p>
-<h3 id="代码-1">代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span>&lt;stdio.h&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> max(a,b) a&gt;b?a:b</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">1000000</span>;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">double</span> a[N+<span class="number">10</span>],b[N+<span class="number">10</span>],c[N+<span class="number">10</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">solve</span><span class="params">(<span class="keyword">double</span> x[])</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> l=<span class="number">1</span>,cnt=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(l&lt;n)&#123;</span><br><span class="line">        <span class="keyword">int</span> r=l;</span><br><span class="line">        <span class="keyword">while</span>(r&lt;n&amp;&amp;x[r]==x[l])</span><br><span class="line">            r++;</span><br><span class="line">        cnt=max(cnt,r-l);</span><br><span class="line">        l=r;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> T;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</span><br><span class="line">    <span class="keyword">while</span>(T--)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%lf"</span>,&amp;a[i]);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)&#123;</span><br><span class="line">            b[i]=a[i+<span class="number">1</span>]-a[i];</span><br><span class="line">            c[i]=a[i+<span class="number">1</span>]/a[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">        ans=max(ans,solve(b));</span><br><span class="line">        ans=max(ans,solve(c));</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></span>
+        <span itemprop="articleBody"><p>遇到就更新~~~<a id="more"></a></p>
+<h2 id="数论">数论</h2><h3 id="欧拉函数">欧拉函数</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Eular</span><span class="params">(<span class="keyword">int</span> n)</span>  <span class="comment">//朴素算法</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> s=n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i*i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(n%i==<span class="number">0</span>)</span><br><span class="line">            s=s/i*(i-<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">while</span>(n%i==<span class="number">0</span>)</span><br><span class="line">            n/=i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(n&gt;<span class="number">1</span>)</span><br><span class="line">        s=s/n*(n-<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">1000010</span>;</span><br><span class="line"><span class="keyword">int</span> a[N]=&#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">priEular</span><span class="params">()</span>   <span class="comment">//筛选法打表</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,j;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;N;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(a[i]==<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">for</span>(j=i;j&lt;N;j+=i)&#123;</span><br><span class="line">                <span class="keyword">if</span>(a[j]==<span class="number">0</span>)</span><br><span class="line">                    a[j]=j;</span><br><span class="line">                a[j]=a[j]/i*(i-<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="图论">图论</h2><h2 id="计算几何">计算几何</h2><h2 id="动态规划">动态规划</h2><h2 id="字符串">字符串</h2><h3 id="最长回文串(Manacher算法)">最长回文串(Manacher算法)</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">manacher</span><span class="params">()</span></span><br><span class="line"></span>&#123;   <span class="comment">//先在原串的字母间添加'#',开头添加特殊字符'$',末尾为空字符</span></span><br><span class="line">    <span class="keyword">int</span> id=<span class="number">0</span>,mx=<span class="number">0</span>,maxlen=<span class="number">0</span>;</span><br><span class="line">    p[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;s[i]!=<span class="string">'\0'</span>;i++)&#123;</span><br><span class="line">        p[i]=mx&gt;i?min(p[<span class="number">2</span>*id-i],mx-i):<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(s[i+p[i]]==s[i-p[i]])</span><br><span class="line">            p[i]++;</span><br><span class="line">        <span class="keyword">if</span>(i+p[i]&gt;mx)&#123;</span><br><span class="line">            mx=i+p[i];</span><br><span class="line">            id=i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(p[i]&gt;maxlen)  <span class="comment">//求最大回文长度</span></span><br><span class="line">            maxlen=p[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> maxlen-<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</span>
       
     </div>
 
@@ -226,13 +221,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/08/05/2015-Hdu-多校赛第五场/" rel="prev">2015 Hdu 多校赛第五场</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/08/04/记忆化搜索专题训练/" rel="next">记忆化搜索专题训练</a>
+              <a href="/2015/09/04/manacher算法求最长回文子串/" rel="next">manacher算法求最长回文子串</a>
             
           </div>
         </div>
@@ -353,7 +346,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hdu_5327_Olympiad"><span class="nav-number">1.</span> <span class="nav-text">Hdu 5327 Olympiad</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#链接"><span class="nav-number">1.1.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题意"><span class="nav-number">1.2.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">1.3.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">1.4.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hdu_5328_Problem_Killer"><span class="nav-number">2.</span> <span class="nav-text">Hdu 5328 Problem Killer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#链接-1"><span class="nav-number">2.1.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题意-1"><span class="nav-number">2.2.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析-1"><span class="nav-number">2.3.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-1"><span class="nav-number">2.4.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数论"><span class="nav-number">1.</span> <span class="nav-text">数论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#欧拉函数"><span class="nav-number">1.1.</span> <span class="nav-text">欧拉函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图论"><span class="nav-number">2.</span> <span class="nav-text">图论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算几何"><span class="nav-number">3.</span> <span class="nav-text">计算几何</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态规划"><span class="nav-number">4.</span> <span class="nav-text">动态规划</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串"><span class="nav-number">5.</span> <span class="nav-text">字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#最长回文串(Manacher算法)"><span class="nav-number">5.1.</span> <span class="nav-text">最长回文串(Manacher算法)</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
