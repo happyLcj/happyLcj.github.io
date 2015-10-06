@@ -28,7 +28,7 @@
 
 
 
-  <meta name="keywords" content="树状数组," />
+  <meta name="keywords" content="大数," />
 
 
 
@@ -37,17 +37,19 @@
   <link rel="shorticon icon" type="image/x-icon" href="/img/HB.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="树状数组(BIT)是与线段树类似的数据结构，用来处理区间修改查询问题">
+<meta name="description" content="小知识C++中bool型值为0表示false, 非0为true,但是java中不允许这样，如if (x = 0) 会报错Math.sqrt();  //求平方根Math.PI       //3.1415926…Math.E        //自然常数e(2.71828…)import static java.lang.Math.*使用上述语句就不必再数学方法名和常量名前添加前缀”Math.”
+强">
 <meta property="og:type" content="article">
-<meta property="og:title" content="树状数组">
-<meta property="og:url" content="http://happylcj.github.io/2015/08/15/树状数组/index.html">
+<meta property="og:title" content="Java基础小结">
+<meta property="og:url" content="http://happylcj.github.io/2015/10/06/Java基础小结/index.html">
 <meta property="og:site_name" content="happy_lcj">
-<meta property="og:description" content="树状数组(BIT)是与线段树类似的数据结构，用来处理区间修改查询问题">
-<meta property="og:image" content="http://happylcj.github.io/img/BIT.png">
-<meta property="og:updated_time" content="2015-09-09T08:18:42.160Z">
+<meta property="og:description" content="小知识C++中bool型值为0表示false, 非0为true,但是java中不允许这样，如if (x = 0) 会报错Math.sqrt();  //求平方根Math.PI       //3.1415926…Math.E        //自然常数e(2.71828…)import static java.lang.Math.*使用上述语句就不必再数学方法名和常量名前添加前缀”Math.”
+强">
+<meta property="og:updated_time" content="2015-10-06T06:43:23.930Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="树状数组">
-<meta name="twitter:description" content="树状数组(BIT)是与线段树类似的数据结构，用来处理区间修改查询问题">
+<meta name="twitter:title" content="Java基础小结">
+<meta name="twitter:description" content="小知识C++中bool型值为0表示false, 非0为true,但是java中不允许这样，如if (x = 0) 会报错Math.sqrt();  //求平方根Math.PI       //3.1415926…Math.E        //自然常数e(2.71828…)import static java.lang.Math.*使用上述语句就不必再数学方法名和常量名前添加前缀”Math.”
+强">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -57,7 +59,7 @@
   };
 </script>
 
-  <title> 树状数组 | happy_lcj </title>
+  <title> Java基础小结 | happy_lcj </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -164,7 +166,7 @@
           
           
             
-              树状数组
+              Java基础小结
             
           
         </h1>
@@ -173,8 +175,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-08-15T13:41:52+08:00" content="2015-08-15">
-            2015-08-15
+          <time itemprop="dateCreated" datetime="2015-10-06T11:06:24+08:00" content="2015-10-06">
+            2015-10-06
           </time>
         </span>
 
@@ -183,8 +185,8 @@
             &nbsp; | &nbsp; 分类于
             
               <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/树状数组/" itemprop="url" rel="index">
-                  <span itemprop="name">树状数组</span>
+                <a href="/categories/Java/" itemprop="url" rel="index">
+                  <span itemprop="name">Java</span>
                 </a>
               </span>
 
@@ -207,11 +209,19 @@
       
 
       
-        <span itemprop="articleBody"><p>树状数组(BIT)是与线段树类似的数据结构，用来处理区间修改查询问题<br><img src="/img/BIT.png" alt="BIT"><br><a id="more"></a></p>
-<h2 id="一维树状数组">一维树状数组</h2><p>如上图所示，若用树状数组求a数组的和<br>c[1]=a[1];<br>c[2]=a[1]+a[2];<br>c[3]=a[3];<br>c[4]=a[1]+a[2]+a[3]+a[4];<br>c[5]=a[5];<br>c[6]=a[5]+a[6];<br>c[7]=a[7];<br>c[8]= a[1]+a[2]+a[3]+a[4]+a[5]+a[6]+a[7]+a[8];<br>将十进制化成二进制，然后观察这些二进制数最右边1的位置：<br>1 —&gt; 00000001    —&gt;1<br>2 —&gt; 00000010    —&gt;2<br>3 —&gt; 00000011    —&gt;1<br>4 —&gt; 00000100    —&gt;4<br>5 —&gt; 00000101    —&gt;1<br>6 —&gt; 00000110    —&gt;2<br>7 —&gt; 00000111    —&gt;1<br>8 —&gt; 00001000    —&gt;8<br>由此我们可以得出结论：c[i]=a[i]+a[i-1]+…+a[i-k+1]<br>其中k为i的二进制数中从右往左第一个1的权值 即k=lowbit(i)=i&amp;(-i)<br>证明：设A’为A的二进制反码，i的二进制表示成A1B，其中A不管，B为全0序列。<br>那么-i=A’0B’+1。由于B为全0序列，那么B’就是全1序列，所以-i=A’1B，所以：<br>i&amp;(-i)= A1B&amp; A’1B=1B，即k=i&amp;(-i)<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> pos,<span class="keyword">int</span> x)</span>  <span class="comment">//将a[pos]增加x</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=pos;i&lt;=n;i+=lowbit(i))</span><br><span class="line">        c[i]+=x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> x)</span>  <span class="comment">//查询[1,n]的和</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=x;i&gt;=<span class="number">1</span>;i-=lowbit(i))</span><br><span class="line">        ans+=c[i];</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>若查询[l,r]的和，可以先查询sum[1,r],sum[1,l-1],sum[l,r]=sum[1,r]-sum[1,l-1]</p>
-<h2 id="二维树状数组">二维树状数组</h2><p>推广到二维数组<br>c[1][1]=a[1][1];<br>c[1][2]=a[1][1]+a[1][2];<br>c[1][3]=a[1][3];<br>c[1][4]=a[1][1]+a[1][2]+a[1][3]+a[1][4];<br>c[1][5]=a[1][5];<br>c[1][6]=a[1][5]+a[1][6];<br>c[1][7]=a[1][7];<br>…<br>c[1][1]=a[1][1];<br>c[2][1]=a[1][1]+a[2][1];<br>c[3][1]=a[3][1];<br>c[4][1]=a[1][1]+a[2][1]+a[3][1]+a[4][1];<br>c[5][1]=a[5][1];<br>c[6][1]=a[5][1]+a[6][1];<br>c[7][1]=a[7][1];<br>…<br>c[2][6]=a[1][5]+a[1][6]+a[2][5]+a[2][6];<br>可得对于c[i][j],k1=lowbit(i)=i&amp;(-i),i可取{i,i-1,…,i-k1+1},<br>k2=lowbit(j)=j&amp;(-j),j可取{j,j-1,…,j-k2+1}<br>c[i][j]=∑c[i,{j,j-1,…j-k2+1}]+∑c[i-1,{j,j-1,…j-k2+1}]+∑c[i-k1+1,{j,j-1,…j-k2+1}]<br>对于W*H的二维BIT只需建立H个大小为x轴方向元素个数W个BIT，然后把这些BIT通过y轴方向管理起来就可以了。也就是说，y方向的BIT的每个元素不是整数，而是一个x轴方向的BIT。<br>这样所有操作的复杂度为O(logW*logH).用同样的方法可以扩展到更高维度的情况。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> val)</span> <span class="comment">//将a[x][y]的值增加val</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = x; i &lt;=n; i += lowbit(i))</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = y; j &lt;=n; j += lowbit(j)) </span><br><span class="line">            c[i][j] += val;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span>    <span class="comment">//查询 1&lt;=i&lt;=x,1&lt;=j&lt;=y的和</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = x; i &gt;= <span class="number">1</span>; i -= lowbit(i))</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = y; j &gt;= <span class="number">1</span>; j -= lowbit(j))</span><br><span class="line">            ans += c[i][j];</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>若需要求l1&lt;=x&lt;=r1,l2&lt;=y&lt;=r2的和<br>s1=sum[1&lt;=i&lt;=r1  ,1&lt;=j&lt;=r2]<br>s2=sum[1&lt;=i&lt;=l1-1,1&lt;=j&lt;=r2]<br>s3=sum[1&lt;=i&lt;=r1  ,1&lt;=j&lt;=l2-1]<br>s4=sum[1&lt;=i&lt;=l1-1,1&lt;=j&lt;=l2-1]<br>根据容斥定理得 sum[l1&lt;=x&lt;=r1,l2&lt;=y&lt;=r2]=s1-s2-s3+s4</p>
+        <span itemprop="articleBody"><h3 id="小知识">小知识</h3><p>C++中bool型值为0表示false, 非0为true,但是java中不允许这样，如if (x = 0) 会报错<br>Math.sqrt();  //求平方根<br>Math.PI       //3.1415926…<br>Math.E        //自然常数e(2.71828…)<br>import static java.lang.Math.*<br>使用上述语句就不必再数学方法名和常量名前添加前缀”Math.”</p>
+<h3 id="强制转换">强制转换</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> x = <span class="number">9.97</span>;</span><br><span class="line"><span class="keyword">int</span> nx = (<span class="keyword">int</span>)x; <span class="comment">//nx=9</span></span><br></pre></td></tr></table></figure>
+<p>强制转换通过截断小数部分奖将浮点数转化为整型,若需要四舍五入可以使用 Math.round<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> nx = (<span class="keyword">int</span>)Math.round(x); <span class="comment">//nx=10</span></span><br></pre></td></tr></table></figure></p>
+<p>$Math.round()$返回的是long型，因此还需要强制转化才能变成int型<br>java中不使用逗号表达式，不过可以在for 循环中用逗号隔开表达式</p>
+<h3 id="String">String</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">String a = <span class="string">"Hello"</span>;</span><br><span class="line">String b = a.substring(<span class="number">0</span>, <span class="number">3</span>) <span class="comment">//b="Hel",从第一个参数开始截取到第二个参数的前一个为止的子串</span></span><br><span class="line"><span class="keyword">int</span> age = <span class="number">13</span>;</span><br><span class="line">String rating = <span class="string">"PG"</span> + age <span class="comment">//字符串拼接</span></span><br><span class="line"><span class="comment">//java中的String不能像c++中直接修改任意字符,但可以用字符串截取子串再用'+'来拼接</span></span><br><span class="line">String a = a.substring(<span class="number">0</span>, <span class="number">3</span>) + <span class="string">"p!"</span>; <span class="comment">//a="Help!"</span></span><br></pre></td></tr></table></figure>
+<p>检查两个字符串是否相等 可以用 equals方法<br>如 $s.equals(t)$ 如果s串与t串相等返回true, 否则返回false,s和t可以是字符串变量也可以是字符串常量<br>如”Hello”.equals(a) 也是合法的,如果检测是否相等时不区分大小写，可以用 $equalsIgnoreCase()$<br>注意：不要用’==’来检测两个字符串是否相等，这个运算只能确定两个字符串是否放在同一位置<br>两个字符串放在同一位置必然相等，但可能两个字符串内容相等，但不在同一位置，用这个方法会返回false<br>java中的 compareTo()方法与c++中的strcmp()完全类似,如 if (s.compareTo(“Hello”) == 0) …</p>
+<h3 id="空串与null">空串与null</h3><p>空串是长度为0的字符串可以用s.length()或s.equals(“”)来判断<br>空串是一个java对象，有自己的长度(0)和内容(空)<br>Null串表示目前没有任何对象与该变量关联，不能使用<br>可以用 if (s == null) 来判断，若s == null，s调用s.length()会报错</p>
+<h3 id="标准输入">标准输入</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line">Scanner input = <span class="keyword">new</span> scanner(System.in);</span><br><span class="line">input.nextInt(); <span class="comment">//读取一个整数</span></span><br><span class="line">input.next();    <span class="comment">//读取一个字符串，遇到空格或换行结束</span></span><br><span class="line">input.nextLine(); <span class="comment">//读取一个字符串，遇到换行结束</span></span><br></pre></td></tr></table></figure>
+<h3 id="标准输出">标准输出</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">System.Out.print();   <span class="comment">//不会自动换行</span></span><br><span class="line">System.Out.println();   <span class="comment">//会自动换行</span></span><br></pre></td></tr></table></figure>
+<p>注：因为输入是可见的，所以Scanner 类不适用于从控制台读取密码<br>Java SE 6 特别引入了 Console 类来实现这个目的。读取密码可以采用：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Console cons = System.console();</span><br><span class="line">String username = cons.readLine(<span class="string">"User name:"</span>);</span><br><span class="line"><span class="keyword">char</span>[] passord = cons.readPassord(<span class="string">"Passord:"</span>);</span><br></pre></td></tr></table></figure></p>
+<p>为了安全起见，返回的密码存在一维字符数组中，而不是字符串中，在对密码进行处理后，<br>应马上用一个填充值覆盖数组元素。</p>
+<h3 id="块">块</h3><p>块(即复合语句)是指有一对花括号括起来的若干条简单的Java语句，块确定了变量的作用域<br>一个块可以嵌套在另一个块中，但是不能在嵌套的两个块中重复定义声明同一变量。<br>在C++中可以在嵌套的块中重复定义同一变量，在内层定义的变量会覆盖外层定义的变量。<br>这样有可能导致程序设计错误，因此在Java中不允许。</p>
+<h3 id="大数值">大数值</h3><p>java.math包中有两个类BigInteger和BigDecimal.前者实现了任意精度的整数运算，后者提供了任意精度的浮点数运算.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.math.*;</span><br><span class="line">BigInteger a=BigIntger.valueOf(<span class="number">100</span>);  <span class="comment">//将普通数转化为大数</span></span><br><span class="line">BigInteger c=a.add(b);     <span class="comment">//c=a+b;</span></span><br><span class="line">BigInteger d=c.multiply(b.add(BigInteger.valueOf(<span class="number">2</span>))); <span class="comment">//d=c*(b+2)</span></span><br><span class="line"><span class="function">BigInteger <span class="title">subtract</span><span class="params">(BigInteger other)</span></span>;   <span class="comment">//减</span></span><br><span class="line"><span class="function">BigInteger <span class="title">divide</span><span class="params">(BigInteger other)</span></span>;     <span class="comment">//除</span></span><br><span class="line"><span class="function">BigInteger <span class="title">mod</span><span class="params">(BigInteger other)</span></span>;        <span class="comment">//取余</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(BigInteger other)</span></span>;         <span class="comment">//比较大小</span></span><br><span class="line">相等返回<span class="number">0</span>，这个大数比另一个大返回正数，否则返回负数</span><br></pre></td></tr></table></figure></p>
 </span>
       
     </div>
@@ -220,7 +230,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/树状数组/" rel="tag">#树状数组</a>
+            <a href="/tags/大数/" rel="tag">#大数</a>
           
         </div>
       
@@ -229,13 +239,13 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/08/19/2015-Hdu-多校赛第九场/" rel="prev">2015 Hdu 多校赛第九场</a>
+              <a href="/2017/01/01/ACM模板/" rel="prev">ACM模板</a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/08/15/2015-Hdu-多校赛第八场/" rel="next">2015 Hdu 多校赛第八场</a>
+              <a href="/2015/09/17/最小树形图-朱刘算法/" rel="next">最小树形图(朱刘算法)</a>
             
           </div>
         </div>
@@ -356,7 +366,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一维树状数组"><span class="nav-number">1.</span> <span class="nav-text">一维树状数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二维树状数组"><span class="nav-number">2.</span> <span class="nav-text">二维树状数组</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#小知识"><span class="nav-number">1.</span> <span class="nav-text">小知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#强制转换"><span class="nav-number">2.</span> <span class="nav-text">强制转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String"><span class="nav-number">3.</span> <span class="nav-text">String</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#空串与null"><span class="nav-number">4.</span> <span class="nav-text">空串与null</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标准输入"><span class="nav-number">5.</span> <span class="nav-text">标准输入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标准输出"><span class="nav-number">6.</span> <span class="nav-text">标准输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#块"><span class="nav-number">7.</span> <span class="nav-text">块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大数值"><span class="nav-number">8.</span> <span class="nav-text">大数值</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
