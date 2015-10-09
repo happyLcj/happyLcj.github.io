@@ -37,19 +37,16 @@
   <link rel="shorticon icon" type="image/x-icon" href="/img/HB.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="小知识C++中bool型值为0表示false, 非0为true,但是java中不允许这样，如if (x = 0) 会报错123Math.sqrt();  //求平方根Math.PI       //3.1415926...Math.E        //自然常数e(2.71828...)&amp;lt;!-- more --&amp;gt;
-$import static java.lang.Math.*$使用上述">
+<meta name="description" content="小知识C++中bool型值为0表示false, 非0为true,但是java中不允许这样，如if (x = 0) 会报错123Math.sqrt();  //求平方根Math.PI       //3.1415926...Math.E        //自然常数e(2.71828...)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java基础小结">
 <meta property="og:url" content="http://happylcj.github.io/2015/10/06/Java基础小结/index.html">
 <meta property="og:site_name" content="happy_lcj">
-<meta property="og:description" content="小知识C++中bool型值为0表示false, 非0为true,但是java中不允许这样，如if (x = 0) 会报错123Math.sqrt();  //求平方根Math.PI       //3.1415926...Math.E        //自然常数e(2.71828...)&amp;lt;!-- more --&amp;gt;
-$import static java.lang.Math.*$使用上述">
-<meta property="og:updated_time" content="2015-10-06T06:57:03.460Z">
+<meta property="og:description" content="小知识C++中bool型值为0表示false, 非0为true,但是java中不允许这样，如if (x = 0) 会报错123Math.sqrt();  //求平方根Math.PI       //3.1415926...Math.E        //自然常数e(2.71828...)">
+<meta property="og:updated_time" content="2015-10-09T12:52:42.718Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java基础小结">
-<meta name="twitter:description" content="小知识C++中bool型值为0表示false, 非0为true,但是java中不允许这样，如if (x = 0) 会报错123Math.sqrt();  //求平方根Math.PI       //3.1415926...Math.E        //自然常数e(2.71828...)&amp;lt;!-- more --&amp;gt;
-$import static java.lang.Math.*$使用上述">
+<meta name="twitter:description" content="小知识C++中bool型值为0表示false, 非0为true,但是java中不允许这样，如if (x = 0) 会报错123Math.sqrt();  //求平方根Math.PI       //3.1415926...Math.E        //自然常数e(2.71828...)">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -209,7 +206,8 @@ $import static java.lang.Math.*$使用上述">
       
 
       
-        <span itemprop="articleBody"><h3 id="小知识">小知识</h3><p>C++中bool型值为0表示false, 非0为true,但是java中不允许这样，如if (x = 0) 会报错<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Math.sqrt();  <span class="comment">//求平方根</span></span><br><span class="line">Math.PI       <span class="comment">//3.1415926...</span></span><br><span class="line">Math.E        <span class="comment">//自然常数e(2.71828...)&lt;!-- more --&gt;</span></span><br></pre></td></tr></table></figure></p>
+        <span itemprop="articleBody"><h3 id="小知识">小知识</h3><p>C++中bool型值为0表示false, 非0为true,但是java中不允许这样，如if (x = 0) 会报错<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Math.sqrt();  <span class="comment">//求平方根</span></span><br><span class="line">Math.PI       <span class="comment">//3.1415926...</span></span><br><span class="line">Math.E        <span class="comment">//自然常数e(2.71828...)</span></span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <p>$import static java.lang.Math.*$<br>使用上述语句就不必再数学方法名和常量名前添加前缀”Math.”</p>
 <h3 id="强制转换">强制转换</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> x = <span class="number">9.97</span>;</span><br><span class="line"><span class="keyword">int</span> nx = (<span class="keyword">int</span>)x; <span class="comment">//nx=9</span></span><br></pre></td></tr></table></figure>
 <p>强制转换通过截断小数部分奖将浮点数转化为整型,若需要四舍五入可以使用 Math.round<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> nx = (<span class="keyword">int</span>)Math.round(x); <span class="comment">//nx=10</span></span><br></pre></td></tr></table></figure></p>
