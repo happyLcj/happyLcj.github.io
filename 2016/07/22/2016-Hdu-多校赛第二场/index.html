@@ -28,7 +28,7 @@
 
 
 
-  <meta name="keywords" content="ftp," />
+  <meta name="keywords" content="Hexo,next" />
 
 
 
@@ -37,16 +37,17 @@
   <link rel="shorticon icon" type="image/x-icon" href="/img/HB.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="FTP服务器是在互联网上提供文件存储和访问服务的计算机，它们依照FTP协议提供服务先安装vsftpd，再进行配置，其配置文件在/etc/vsftpd.conf">
+<meta name="description" content="简介">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ubuntu下ftp server 搭建">
-<meta property="og:url" content="http://happylcj.github.io/2016/06/13/ubuntu下ftp-server-搭建/index.html">
+<meta property="og:title" content="2016 Hdu 多校赛第二场">
+<meta property="og:url" content="http://happylcj.github.io/2016/07/22/2016-Hdu-多校赛第二场/index.html">
 <meta property="og:site_name" content="happy_lcj">
-<meta property="og:description" content="FTP服务器是在互联网上提供文件存储和访问服务的计算机，它们依照FTP协议提供服务先安装vsftpd，再进行配置，其配置文件在/etc/vsftpd.conf">
-<meta property="og:updated_time" content="2016-06-14T09:29:27.149Z">
+<meta property="og:description" content="简介">
+<meta property="og:image" content="http://happylcj.github.io/img">
+<meta property="og:updated_time" content="2016-07-22T05:07:08.058Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ubuntu下ftp server 搭建">
-<meta name="twitter:description" content="FTP服务器是在互联网上提供文件存储和访问服务的计算机，它们依照FTP协议提供服务先安装vsftpd，再进行配置，其配置文件在/etc/vsftpd.conf">
+<meta name="twitter:title" content="2016 Hdu 多校赛第二场">
+<meta name="twitter:description" content="简介">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -56,7 +57,7 @@
   };
 </script>
 
-  <title> Ubuntu下ftp server 搭建 | happy_lcj </title>
+  <title> 2016 Hdu 多校赛第二场 | happy_lcj </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -163,7 +164,7 @@
           
           
             
-              Ubuntu下ftp server 搭建
+              2016 Hdu 多校赛第二场
             
           
         </h1>
@@ -172,26 +173,11 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2016-06-13T19:17:21+08:00" content="2016-06-13">
-            2016-06-13
+          <time itemprop="dateCreated" datetime="2016-07-22T12:36:55+08:00" content="2016-07-22">
+            2016-07-22
           </time>
         </span>
 
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/杂谈/" itemprop="url" rel="index">
-                  <span itemprop="name">杂谈</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
         
 
         
@@ -206,32 +192,29 @@
       
 
       
-        <span itemprop="articleBody"><p>FTP服务器是在互联网上提供文件存储和访问服务的计算机，它们依照FTP协议提供服务<br>先安装vsftpd，再进行配置，其配置文件在/etc/vsftpd.conf<br><a id="more"></a><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">listen=YES  <span class="comment">//是否以守护进程独立运行</span></span><br><span class="line"><span class="comment">// Allow anonymous FTP? (Disabled by default)</span></span><br><span class="line">anonymous_enable=NO <span class="comment">//是否允许匿名登录</span></span><br><span class="line"><span class="comment">// allow local users to log in.</span></span><br><span class="line">local_enable=YES   <span class="comment">//运行本地用户登录</span></span><br><span class="line"><span class="comment">// enable any form of FTP write command.</span></span><br><span class="line">write_enable=YES  <span class="comment">//用户对ftp服务器文件是否有写权限</span></span><br><span class="line">local_umask=<span class="number">022</span>  <span class="comment">//文件上传后的权限为该值取反</span></span><br><span class="line">dirmessage_enable=YES <span class="comment">//激活目录信息,当远程用户更改目录时,将出现提示信息</span></span><br><span class="line">use_localtime=YES  <span class="comment">//是否用本地时间</span></span><br><span class="line"><span class="comment">// Activate logging of uploads/downloads.</span></span><br><span class="line">xferlog_enable=YES  <span class="comment">//启用上传和下载日志功能</span></span><br><span class="line">connect_from_port_20=YES  <span class="comment">//启用FTP数据端口的连接请求</span></span><br><span class="line">xferlog_file=/var/<span class="built_in">log</span>/vsftpd.<span class="built_in">log</span>   <span class="comment">//设置日志文件</span></span><br><span class="line"><span class="comment">//控制登录FTP的用户是否被限制在家目录下</span></span><br><span class="line"><span class="comment">//若参数为YES,chroot_list_file中的用户都被限制在自己的home目录</span></span><br><span class="line"><span class="comment">//即文件中的用户都只能访问自己的家目录，其他用户都不被限制在自己的home目录</span></span><br><span class="line"><span class="comment">//否则相反，即list名单为特例名单</span></span><br><span class="line">chroot_local_user=YES</span><br><span class="line"><span class="comment">//是否启用list名单</span></span><br><span class="line">chroot_list_enable=YES</span><br><span class="line"><span class="comment">// (default follows)</span></span><br><span class="line"><span class="comment">//文件中写需要被限制的用户名</span></span><br><span class="line">chroot_list_file=/etc/vsftpd.chroot_list  <span class="comment">//设置list文件路径</span></span><br><span class="line"><span class="comment">//chroot用户是否有写权限</span></span><br><span class="line">allow_writeable_chroot=YES</span><br><span class="line">secure_chroot_dir=/var/run/vsftpd/empty</span><br><span class="line"><span class="comment">// This string is the name of the PAM service vsftpd will use.</span></span><br><span class="line">pam_service_name=vsftpd</span><br><span class="line"><span class="comment">// This option specifies the location of the RSA certificate to use</span></span><br><span class="line"><span class="comment">// for SSL encrypted connections.</span></span><br><span class="line">rsa_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem</span><br><span class="line"><span class="comment">// This option specifies the location of the RSA key to use for SSL</span></span><br><span class="line"><span class="comment">// encrypted connections.</span></span><br><span class="line">rsa_private_key_file=/etc/ssl/<span class="keyword">private</span>/ssl-cert-snakeoil.key</span><br><span class="line"><span class="comment">//是否开启list文件</span></span><br><span class="line">userlist_enable=yes</span><br><span class="line"><span class="comment">//no:list文件中用户可登录</span></span><br><span class="line"><span class="comment">//yes：list文件中用户不可登录</span></span><br><span class="line">userlist_deny=no</span><br><span class="line"><span class="comment">//设置list文件路径,list文件中写用户名</span></span><br><span class="line">userlist_file=/etc/vsftpd.user_list</span><br><span class="line">seccomp_sandbox=NO</span><br><span class="line"><span class="comment">//check_shell=NO</span></span><br></pre></td></tr></table></figure></p>
-<p>ubuntu下配置完后出现错误<br>500 OOPS: prctl PR_SET_SECCOMP failed<br>解决：seccomp_sandbox=NO<br>500 OOPS: vsftpd: refusing to run with writable root inside chroot()<br>如果开启了chroot来控制用户路径，则用户不能再具有该用户家目录的写的权限<br>解决方法1：将该用户家目录的写权限(chmod a-w)<br>但是这样用户不再具有写权限，自然也上传不了文件<br>解决方法2：allow_writeable_chroot=YES<br>设置用户只能进行ftp文件传输，不能登录shell<br>useradd -d /home/ftp -m -s /usr/sbin/nologin ftp<br>-d设置家目录 -m若设置的家目录不存在会创建目录 -s用户的登录shell<br>结果登录不上ftp服务器，解决方法：在/etc/shells文件中添加/usr/sbin/nologin</p>
+        <span itemprop="articleBody"><h3 id="简介">简介</h3><p><img src="/img" alt=""><br><a id="more"></a></p>
+<h2 id="Hdu_5734_Acperience">Hdu 5734 Acperience</h2><h3 id="链接">链接</h3><p><a href="Acperience">http://acm.hdu.edu.cn/showproblem.php?pid=5734</a></p>
+<h3 id="题意">题意</h3><p>$已知W=(w<em>1,w_2,…,w_n),求\left| W - \alpha B \right|^2的最小值$<br>$其中B=(b_1,b_2,…,b_n)(b_i \in {+1,-1}),\alpha \ge 0.$<br>$当X = (x_1, x_2, …, x_n),\left| X \right|=\sqrt {x</em>{1}^{2}+\cdots +x_{n}^{2}}$</p>
+<h3 id="分析">分析</h3><p>设$F(\alpha)=\Sigma {(w<em>i-\alpha * b_i)^2}$,F的最小值即为所求答案。要想所F最小，每一项的值都必须最小。<br>$\alpha一定时，当w_i$<0,(w_i+\alphs)^2=(|w_i|-\alphs)^2最小，当w_i>0,(w_i-\alphs)^2$<br>$即b_i与w_i同符号$ 可得F=\Sigma {(|w_i|-\alpha)^2}=\Sigma {w</0,(w_i+\alphs)^2=(|w_i|-\alphs)^2最小，当w_i></em>{i}^{2}}-2*\alpha*sum+n*{\alpha}^2<br>其中sum=|w1| + |w2| +…+ |wn|,F是开口向上的抛物线，当$\alpha = sum/n$时取最小值.化简得<br>$$F=\Sigma {w_{i}^{2}} -sum*sum/n$$</p>
+<h3 id="参考代码">参考代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span>&lt;stdio.h&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span>&lt;string.h&gt;</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">100010</span>;</span><br><span class="line">LL w[N];</span><br><span class="line"><span class="function">LL <span class="title">gcd</span><span class="params">(LL a,LL b)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> b==<span class="number">0</span>?a:gcd(b,a%b);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> T;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</span><br><span class="line">    <span class="keyword">while</span>(T--)&#123;</span><br><span class="line">        <span class="keyword">int</span> n;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">        LL sum=<span class="number">0</span>;</span><br><span class="line">        LL ansx=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;w[i]);</span><br><span class="line">            <span class="keyword">if</span>(w[i]&lt;<span class="number">0</span>) w[i]=-w[i];</span><br><span class="line">            sum+=w[i];</span><br><span class="line">            ansx+=w[i]*w[i];</span><br><span class="line">        &#125;</span><br><span class="line">        ansx=ansx*n-sum*sum;</span><br><span class="line">        LL ansy=n;</span><br><span class="line">        LL g=gcd(ansx,ansy);</span><br><span class="line">        ansx/=g;</span><br><span class="line">        ansy/=g;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld/%lld\n"</span>,ansx,ansy);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </span>
       
     </div>
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/ftp/" rel="tag">#ftp</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/06/14/Ubuntu下配置shadowsocks以及开机自启/" rel="prev">Ubuntu 下配置 shadowsocks以及开机自启</a>
+              <a href="/2017/01/01/ACM模板/" rel="prev">ACM模板</a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/05/17/Sdut-2880-Devour-Magic/" rel="next">Sdut 2880 Devour Magic</a>
+              <a href="/2016/07/22/2016-Hdu-多校赛第一场/" rel="next">2016 Hdu 多校赛第一场</a>
             
           </div>
         </div>
@@ -352,7 +335,7 @@
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hdu_5734_Acperience"><span class="nav-number"></span> <span class="nav-text">Hdu 5734 Acperience</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#链接"><span class="nav-number">1.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题意"><span class="nav-number">2.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">3.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考代码"><span class="nav-number">4.</span> <span class="nav-text">参考代码</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
