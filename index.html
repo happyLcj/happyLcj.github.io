@@ -262,6 +262,21 @@
         </span>
 
         
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/HDU/" itemprop="url" rel="index">
+                  <span itemprop="name">HDU</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
 
         
           
@@ -276,7 +291,9 @@
 
       
         
-          <h3 id="简介">简介</h3><p><img src="/img" alt=""><br>
+          <h2 id="Hdu_5763_Another_Meaning">Hdu 5763 Another Meaning</h2><h3 id="链接">链接</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5763">Another Meaning</a></p>
+<h3 id="题意">题意</h3><p>给定句子A和单词B，单词B可表示两种意思，问句子A可表示多少种意思</p>
+<h3 id="分析">分析</h3><p>令dp[i]表示到i结尾的字符串可以表示的不同含义数，那么考虑两种转移:<br>末尾不替换含义：dp[i-1]<br>末尾替换含义：dp[i-|B|]  (A.substr(i-|B|+1,|B|) = B，即可匹配)<br>那么对于末尾替换含义的转移，需要快速判断B能不能和当前位置的后缀匹配，<br>kmp或者hash判断即可。直接strstr也可过。
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/07/29/2016-Hdu-多校赛第四场/#more" rel="contents">
               阅读全文 &raquo;
@@ -843,7 +860,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">27</span>
+              <span class="site-state-item-count">29</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
