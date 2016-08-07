@@ -1,0 +1,667 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="深深的话浅浅说，长长的路慢慢走" />
+
+
+
+  <meta name="keywords" content="DFS,DP,Lucas定理," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/img/HB.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="Hdu 5793 A Boring Question链接A Boring Question
+题意\sum_{0\leq k_{1},k_{2},\cdots k_{m} \leq n} \prod_{1\leqslant j &amp;lt;m}\binom{k_{j+1}}{k_{j}} \% 1000000007=?
+分析打表找规律得出的，官方题解推导：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2016 Hdu 多校赛第六场">
+<meta property="og:url" content="http://happylcj.github.io/2016/08/07/2016-Hdu-多校赛第六场/index.html">
+<meta property="og:site_name" content="happy_lcj">
+<meta property="og:description" content="Hdu 5793 A Boring Question链接A Boring Question
+题意\sum_{0\leq k_{1},k_{2},\cdots k_{m} \leq n} \prod_{1\leqslant j &amp;lt;m}\binom{k_{j+1}}{k_{j}} \% 1000000007=?
+分析打表找规律得出的，官方题解推导：">
+<meta property="og:image" content="http://happylcj.github.io/img/Hdu5793.png">
+<meta property="og:image" content="http://happylcj.github.io/img/Lucas.png">
+<meta property="og:updated_time" content="2016-08-07T07:56:56.345Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2016 Hdu 多校赛第六场">
+<meta name="twitter:description" content="Hdu 5793 A Boring Question链接A Boring Question
+题意\sum_{0\leq k_{1},k_{2},\cdots k_{m} \leq n} \prod_{1\leqslant j &amp;lt;m}\binom{k_{j+1}}{k_{j}} \% 1000000007=?
+分析打表找规律得出的，官方题解推导：">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'hide'
+  };
+</script>
+
+  <title> 2016 Hdu 多校赛第六场 | happy_lcj </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">happy_lcj</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              2016 Hdu 多校赛第六场
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2016-08-07T14:28:59+08:00" content="2016-08-07">
+            2016-08-07
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/HDU/" itemprop="url" rel="index">
+                  <span itemprop="name">HDU</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h2 id="Hdu_5793_A_Boring_Question">Hdu 5793 A Boring Question</h2><h3 id="链接">链接</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5793" target="_blank" rel="external">A Boring Question</a></p>
+<h3 id="题意">题意</h3><p>\sum_{0\leq k_{1},k_{2},\cdots k_{m} \leq n} \prod_{1\leqslant j &lt;m}\binom{k_{j+1}}{k_{j}} \% 1000000007=?</p>
+<h3 id="分析">分析</h3><p>打表找规律得出的，官方题解推导：<br><img src="/img/Hdu5793.png" alt="Hdu5793"><a id="more"></a></p>
+<h3 id="参考代码">参考代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span>&lt;stdio.h&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span>&lt;string.h&gt;</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod=(<span class="keyword">int</span>)<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="function">LL <span class="title">powMod</span><span class="params">(LL a,LL b)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    LL ans=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(b)&#123;</span><br><span class="line">        <span class="keyword">if</span>(b&amp;<span class="number">1</span>)</span><br><span class="line">            ans=ans*a%mod;</span><br><span class="line">        b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">        a=a*a%mod;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> T;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</span><br><span class="line">    <span class="keyword">while</span>(T--)&#123;</span><br><span class="line">        LL n,m;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>,&amp;n,&amp;m);</span><br><span class="line">        LL ans=(powMod(m,n+<span class="number">1</span>)-<span class="number">1</span>+mod)%mod*powMod(m-<span class="number">1</span>,mod-<span class="number">2</span>)%mod;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Hdu_5794_A_Simple_Chess">Hdu 5794 A Simple Chess</h2><h3 id="链接-1">链接</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5794" target="_blank" rel="external">A Simple Chess</a></p>
+<h3 id="题意-1">题意</h3><p>有一个n*m的棋盘，有一个棋子要从(1,1),走到(n,m),问有多少中走法？<br>每次只能从往右下走日字形，且棋盘上有些障碍点，障碍点不能放棋子。</p>
+<h3 id="分析-1">分析</h3><p>若不考虑障碍，从(a,b)点到(c,d)点，设走(2,1)有lt步，(1,2)有up步,则<br>lt=(2<em>(c-a)-(d-b))/3,up=(2</em>(d-b)-(c-a))/3;<br>可以计算出(1,1)到(n,m)以及各个障碍物的方案数，依次从上往下，从左往右<br>计算各个障碍对其他点的方案的贡献值并更新其他点，最终可算出到(n,m)的方案数。<br>题中涉及到求组合数取余，数据范围较大，需用到Lucas定理<br><img src="/img/Lucas.png" alt="Lucas"></p>
+<h3 id="参考代码-1">参考代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span>&lt;stdio.h&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span>&lt;string.h&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span>&lt;algorithm&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">105</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MOD=<span class="number">110119</span>;</span><br><span class="line"><span class="keyword">struct</span> Obs&#123;</span><br><span class="line">    LL x,y;</span><br><span class="line">    LL rk;</span><br><span class="line">    LL step;</span><br><span class="line">&#125;obs[N];</span><br><span class="line">LL edge[N][N],fac[MOD+<span class="number">5</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    fac[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=MOD;i++)&#123;</span><br><span class="line">        fac[i]=fac[i-<span class="number">1</span>]*i%MOD;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">calStep</span><span class="params">(LL a,LL b,LL c,LL d,LL&amp; up,LL&amp; lt)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    lt=<span class="number">2</span>*(c-a)-(d-b);</span><br><span class="line">    up=<span class="number">2</span>*(d-b)-(c-a);</span><br><span class="line">    <span class="keyword">if</span>(lt&lt;<span class="number">0</span>||lt%<span class="number">3</span>||up&lt;<span class="number">0</span>||up%<span class="number">3</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    lt/=<span class="number">3</span>;</span><br><span class="line">    up/=<span class="number">3</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">LL <span class="title">powMod</span><span class="params">(LL a,LL b)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    LL ans=<span class="number">1</span>;</span><br><span class="line">    a%=MOD;</span><br><span class="line">    <span class="keyword">while</span>(b)&#123;</span><br><span class="line">        <span class="keyword">if</span>(b&amp;<span class="number">1</span>)</span><br><span class="line">            ans=ans*a%MOD;</span><br><span class="line">        a=a*a%MOD;</span><br><span class="line">        b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">LL <span class="title">comb</span><span class="params">(LL n,LL m)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(m&gt;n||m&lt;<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(m==<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> fac[n]*powMod(fac[n-m]*fac[m]%MOD,MOD-<span class="number">2</span>)%MOD;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">LL <span class="title">Lucas</span><span class="params">(LL n,LL m)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(m==<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> comb(n%MOD,m%MOD)*Lucas(n/MOD,m/MOD)%MOD;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addObs</span><span class="params">(LL x,LL y,LL up,LL lt,<span class="keyword">int</span> id)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    obs[id].x=x;</span><br><span class="line">    obs[id].y=y;</span><br><span class="line">    obs[id].rk=lt+up;</span><br><span class="line">    obs[id].step=Lucas(up+lt,up);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">buildEdge</span><span class="params">(<span class="keyword">int</span> k)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(edge,-<span class="number">1</span>,<span class="keyword">sizeof</span>(edge));</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;k;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;k;j++)&#123;</span><br><span class="line">            LL up,lt;</span><br><span class="line">            <span class="keyword">if</span>(calStep(obs[i].x,obs[i].y,obs[j].x,obs[j].y,up,lt))&#123;</span><br><span class="line">                edge[i][j]=Lucas(up+lt,up);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(Obs a,Obs b)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(a.rk!=b.rk)</span><br><span class="line">        <span class="keyword">return</span> a.rk&lt;b.rk;</span><br><span class="line">    <span class="keyword">return</span> a.x&lt;b.x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    LL n,m,up,lt;</span><br><span class="line">    <span class="keyword">int</span> r,cas=<span class="number">1</span>;</span><br><span class="line">    init();</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%lld%lld%d"</span>,&amp;n,&amp;m,&amp;r)!=EOF)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Case #%d: "</span>,cas++);</span><br><span class="line">        <span class="keyword">int</span> k=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">bool</span> flag=<span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;r;i++)&#123;</span><br><span class="line">            LL x,y;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>,&amp;x,&amp;y);</span><br><span class="line">            <span class="keyword">if</span>(x==n&amp;&amp;y==m)</span><br><span class="line">                flag=<span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">if</span>(!flag&amp;&amp;calStep(<span class="number">1</span>,<span class="number">1</span>,x,y,up,lt))&#123;</span><br><span class="line">                addObs(x,y,up,lt,k);</span><br><span class="line">                k++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!calStep(<span class="number">1</span>,<span class="number">1</span>,n,m,up,lt)||flag)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"0\n"</span>);</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        addObs(n,m,up,lt,k);</span><br><span class="line">        k++;</span><br><span class="line">        sort(obs,obs+k,cmp);</span><br><span class="line">        buildEdge(k);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;k;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;k;j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(obs[i].x==obs[j].x&amp;&amp;obs[i].y==obs[j].y)</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span>(edge[i][j]!=-<span class="number">1</span>)&#123;</span><br><span class="line">                    obs[j].step=(obs[j].step-obs[i].step*edge[i][j]%MOD)%MOD;</span><br><span class="line">                    <span class="keyword">if</span>(obs[j].step&lt;<span class="number">0</span>)</span><br><span class="line">                        obs[j].step+=MOD;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,obs[k-<span class="number">1</span>].step);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Hdu_5795_A_Simple_Nim">Hdu 5795 A Simple Nim</h2><h3 id="链接-2">链接</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5795" target="_blank" rel="external">A Simple Nim</a></p>
+<h3 id="题意-2">题意</h3><p>普通的Nim博弈的基础上多了一个操作，可选择任意一堆物品，<br>将其分成三堆(不能分出空对)，求谁会赢得游戏</p>
+<h3 id="分析-2">分析</h3><p>sg[0]=0<br>当x=8k+7时sg[x]=8k+8，<br>当x=8k+8时sg[x]=8k+7,<br>其余时候sg[x]=x；（k&gt;=0）<br>打表找规律可得，数学归纳法可证。</p>
+<h3 id="参考代码-2">参考代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span>&lt;stdio.h&gt;</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> T;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</span><br><span class="line">    <span class="keyword">while</span>(T--)&#123;</span><br><span class="line">        <span class="keyword">int</span> n;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">        <span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> x;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">            <span class="keyword">if</span>(x%<span class="number">8</span>==<span class="number">7</span>)</span><br><span class="line">                ans^=(x+<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(x&amp;&amp;x%<span class="number">8</span>==<span class="number">0</span>)</span><br><span class="line">                ans^=x-<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                ans^=x;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(ans==<span class="number">0</span>)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"Second player wins.\n"</span>);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"First player wins.\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Hdu_5800_To_My_Girlfriend">Hdu 5800 To My Girlfriend</h2><h3 id="链接-3">链接</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5800" target="_blank" rel="external">To My Girlfriend</a></p>
+<h3 id="题意-3">题意</h3><p>给定包含n个元素的集合，问存在多少个子集，满足：<br>其中有两个元素必选，两个元素必不选，其和为m（1&lt;=m&lt;=s)</p>
+<h3 id="分析-3">分析</h3><p>令dp[i][j][s1][s2]表示前i个物品填了j的体积，有s1个物品选为为必选，s2个物品选为必不选的方案数(0&lt;=s1,s2&lt;=2)，对于每一个物品，有四种状态：不选，选，必选，必不选，则有转移方程dp[i][j][s1][s2] = dp[i - 1][j][s1][s2] + dp[i - 1][j-a[i]][s1][s2] + dp[i - 1][j - a[i]][s1 - 1][s2] + dp[i - 1][j][s1][s2 - 1]，边界条件为dp[0][0][0][0] = 1，时间复杂度O(NS*3^2)。</p>
+<h3 id="参考代码-3">参考代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span>&lt;stdio.h&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span>&lt;string.h&gt;</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">1005</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MOD=(<span class="keyword">int</span>)<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line">LL dp[<span class="number">2</span>][N][<span class="number">3</span>][<span class="number">3</span>];</span><br><span class="line"><span class="keyword">int</span> n,s,a[N];</span><br><span class="line"><span class="function">LL <span class="title">solve</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(dp,<span class="number">0</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">    dp[<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">bool</span> now=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        now=!now;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;=s;j++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> s1=<span class="number">0</span>;s1&lt;<span class="number">3</span>;s1++)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> s2=<span class="number">0</span>;s2&lt;<span class="number">3</span>;s2++)&#123;</span><br><span class="line">                    <span class="keyword">bool</span> last=!now;</span><br><span class="line">                    dp[now][j][s1][s2]=dp[last][j][s1][s2];</span><br><span class="line">                    <span class="keyword">if</span>(j&gt;=a[i])</span><br><span class="line">                        dp[now][j][s1][s2]+=dp[last][j-a[i]][s1][s2];</span><br><span class="line">                    <span class="keyword">if</span>(j&gt;=a[i]&amp;&amp;s1&gt;<span class="number">0</span>)</span><br><span class="line">                        dp[now][j][s1][s2]+=dp[last][j-a[i]][s1-<span class="number">1</span>][s2];</span><br><span class="line">                    <span class="keyword">if</span>(s2&gt;<span class="number">0</span>)</span><br><span class="line">                        dp[now][j][s1][s2]+=dp[last][j][s1][s2-<span class="number">1</span>];</span><br><span class="line">                    dp[now][j][s1][s2]%=MOD;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    LL ans=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=s;i++)&#123;</span><br><span class="line">        ans=ans+dp[now][i][<span class="number">2</span>][<span class="number">2</span>];</span><br><span class="line">        ans=ans&gt;MOD?ans-MOD:ans;</span><br><span class="line">    &#125;</span><br><span class="line">    ans=ans*<span class="number">4</span>%MOD;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> T;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</span><br><span class="line">    <span class="keyword">while</span>(T--)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;s);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,solve());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Hdu_5802_Windows_10">Hdu 5802 Windows 10</h2><h3 id="链接-4">链接</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5802" target="_blank" rel="external">Windows 10</a></p>
+<h3 id="题意-4">题意</h3><p>某人需调节电脑音量，他有三种操作，按上键，按下键，休息，每次操作需一秒。<br>按上键：每次音量增加1，休息：音量不变<br>下键：第一次按音量减小1，若上一秒按下键音量降低了x,则这秒降低2x,<br>若上一秒按的上键，或休息，则这秒按下键减小1<br>求将音量p调到q至少要多少秒？</p>
+<h3 id="分析-4">分析</h3><p><strong>贪心+dfs</strong><br>比较直观的看法是使劲往下降，然后升回来<br>或者使劲往下降然后停顿然后再使劲往下降。。。<br>于是就能将问题变成一个子问题，然后dfs就好<br>需要注意的是由于按up键也可以打断连续向下的功效<br>所以应该记录停顿了几次，以后向上的时候用停顿补回来</p>
+<h3 id="参考代码-4">参考代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span>&lt;stdio.h&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span>&lt;algorithm&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> INF 0x3f3f3f</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line">LL ans;</span><br><span class="line">LL len,two[<span class="number">35</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    len=<span class="number">31</span>;</span><br><span class="line">    two[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">    LL tmp=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;len;i++)&#123;</span><br><span class="line">        tmp&lt;&lt;=<span class="number">1</span>;</span><br><span class="line">        two[i]=tmp-<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(LL now,LL ed,LL step,LL stop)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> pos=lower_bound(two,two+len,now-ed)-two;</span><br><span class="line">    LL tmp=now-two[pos];</span><br><span class="line">    <span class="keyword">if</span>(tmp==ed)&#123;</span><br><span class="line">        ans=min(ans,step+pos);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        LL up=ed-max(<span class="number">0L</span>L,tmp);</span><br><span class="line">        ans=min(ans,step+pos+max(<span class="number">0L</span>L,up-stop));</span><br><span class="line">        dfs(now-two[pos-<span class="number">1</span>],ed,step+pos-<span class="number">1</span>+<span class="number">1</span>,stop+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> T;</span><br><span class="line">    init();</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</span><br><span class="line">    <span class="keyword">while</span>(T--)&#123;</span><br><span class="line">        LL p,q;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>,&amp;p,&amp;q);</span><br><span class="line">        <span class="keyword">if</span>(p&lt;q)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,q-p);</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        ans=INF;</span><br><span class="line">        dfs(p,q,<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/DFS/" rel="tag">#DFS</a>
+          
+            <a href="/tags/DP/" rel="tag">#DP</a>
+          
+            <a href="/tags/Lucas定理/" rel="tag">#Lucas定理</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/01/ACM模板/" rel="prev">ACM模板</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/07/2016-Hdu-多校赛第五场/" rel="next">2016 Hdu 多校赛第五场</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/img/头像.jpg" alt="happy_lcj" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">happy_lcj</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">深深的话浅浅说，长长的路慢慢走</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">38</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/happyLcj" target="_blank">github</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/acm_code" target="_blank">csdn</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name">Links</p>
+            
+              <span class="links-of-author-item">
+              <a href="http://enumz.github.io/" target="_blank">Enumz's blog</a>
+              </span>
+            
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hdu_5793_A_Boring_Question"><span class="nav-number">1.</span> <span class="nav-text">Hdu 5793 A Boring Question</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#链接"><span class="nav-number">1.1.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题意"><span class="nav-number">1.2.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">1.3.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考代码"><span class="nav-number">1.4.</span> <span class="nav-text">参考代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hdu_5794_A_Simple_Chess"><span class="nav-number">2.</span> <span class="nav-text">Hdu 5794 A Simple Chess</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#链接-1"><span class="nav-number">2.1.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题意-1"><span class="nav-number">2.2.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析-1"><span class="nav-number">2.3.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考代码-1"><span class="nav-number">2.4.</span> <span class="nav-text">参考代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hdu_5795_A_Simple_Nim"><span class="nav-number">3.</span> <span class="nav-text">Hdu 5795 A Simple Nim</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#链接-2"><span class="nav-number">3.1.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题意-2"><span class="nav-number">3.2.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析-2"><span class="nav-number">3.3.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考代码-2"><span class="nav-number">3.4.</span> <span class="nav-text">参考代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hdu_5800_To_My_Girlfriend"><span class="nav-number">4.</span> <span class="nav-text">Hdu 5800 To My Girlfriend</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#链接-3"><span class="nav-number">4.1.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题意-3"><span class="nav-number">4.2.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析-3"><span class="nav-number">4.3.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考代码-3"><span class="nav-number">4.4.</span> <span class="nav-text">参考代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hdu_5802_Windows_10"><span class="nav-number">5.</span> <span class="nav-text">Hdu 5802 Windows 10</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#链接-4"><span class="nav-number">5.1.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题意-4"><span class="nav-number">5.2.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析-4"><span class="nav-number">5.3.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考代码-4"><span class="nav-number">5.4.</span> <span class="nav-text">参考代码</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">happy_lcj</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+    
+
+  
+
+
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/img/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>
